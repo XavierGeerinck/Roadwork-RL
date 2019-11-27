@@ -43,16 +43,20 @@ message MetaSpaceDiscrete {
 }
 
 message MetaSpaceTuple {
-    repeated MetaSpaceTupleWrapper spaces = 1;
+    repeated MetaSpaceWrapper spaces = 1;
 }
 
-message MetaSpaceTupleWrapper {
+message MetaSpaceWrapper {
     oneof type {
         MetaSpaceBox box = 1;
         MetaSpaceDiscrete discrete = 2;
         MetaSpaceTuple tuple = 3;
     }
 }
+
+// ============================================
+// OBSERVATION/ACTION SPACE VALUES
+// ============================================
 
 // ====================================
 // REQUEST / RESPONSE
@@ -70,8 +74,7 @@ message SimulatorStepResponse {
 
     oneof observation {
         SpaceObservationDiscrete observationDiscrete = 4;
-        SpaceObservationBoxFloat observationBoxFloat = 5;
-        SpaceObservationBoxInt observationBoxInt = 6;
+        SpaceObservationBox observationBox = 5;
     }
 }
 
@@ -79,12 +82,8 @@ message SpaceObservationDiscrete {
     int32 observation = 1;
 }
 
-message SpaceObservationBoxFloat {
-    repeated float observation = 1;
-}
-
-message SpaceObservationBoxInt {
-    repeated sint32 observation = 1;
+message SpaceObservationBox {
+    repeated double observation = 1;
 }
 
 message SimulatorResetRequest {
@@ -120,42 +119,24 @@ message SimulatorActionSpaceSampleRequest {
     string instanceId = 1;
 }
 
-message SimulatorActionSpaceSampleResponse {
-    int32 action = 1; // Note: Serialized as bytes!
-}
-
 message SimulatorActionSpaceInfoRequest {
     string instanceId = 1;
-}
-
-message SimulatorActionSpaceInfoResponse {
-    string name = 1;
-    oneof actionSpaceType {
-        SpaceTypeDiscrete typeDiscrete = 2;
-        SpaceTypeBox typeBox = 3;
-    }
 }
 
 message SimulatorObservationSpaceInfoRequest {
     string instanceId = 1;
 }
 
+message SimulatorActionSpaceSampleResponse {
+    int32 action = 1; // Note: Serialized as bytes!
+}
+
+message SimulatorActionSpaceInfoResponse {
+    MetaSpaceWrapper result = 1;
+}
+
 message SimulatorObservationSpaceInfoResponse {
-    string name = 1;
-    oneof observationType {
-        SpaceTypeDiscrete typeDiscrete = 2;
-        SpaceTypeBox typeBox = 3;
-    }
-}
-
-message SpaceTypeDiscrete {
-    int32 n = 1;
-}
-
-message SpaceTypeBox {
-    repeated int32 shape = 1; // Note: we use .extend() to append an entire list to this
-    repeated double low = 2;
-    repeated double high = 3;
+    MetaSpaceWrapper result = 1;
 }
 
 service Simulator {

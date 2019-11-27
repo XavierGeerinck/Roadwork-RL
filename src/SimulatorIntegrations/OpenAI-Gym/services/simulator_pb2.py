@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='roadwork.services.simulator_service',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x18services/simulator.proto\x12#roadwork.services.simulator_service\"!\n\x0b\x42\x61seRequest\x12\x12\n\ninstanceId\x18\x01 \x01(\t\"\x0e\n\x0c\x42\x61seResponse\"\x8c\x01\n\x0cMetaSpaceBox\x12\x12\n\ndimensions\x18\x01 \x03(\r\x12[\n\x0f\x64imensionDouble\x18\x02 \x01(\x0b\x32@.roadwork.services.simulator_service.MetaSpaceBoxDimensionDoubleH\x00\x42\x0b\n\tdimension\"M\n\x1bMetaSpaceBoxDimensionDouble\x12\x0b\n\x03low\x18\x01 \x03(\x01\x12\x0c\n\x04high\x18\x02 \x03(\x01\x12\x13\n\x0bobservation\x18\x03 \x03(\x01\"\x1e\n\x11MetaSpaceDiscrete\x12\t\n\x01n\x18\x01 \x01(\r\"\\\n\x0eMetaSpaceTuple\x12J\n\x06spaces\x18\x01 \x03(\x0b\x32:.roadwork.services.simulator_service.MetaSpaceTupleWrapper\"\xf3\x01\n\x15MetaSpaceTupleWrapper\x12@\n\x03\x62ox\x18\x01 \x01(\x0b\x32\x31.roadwork.services.simulator_service.MetaSpaceBoxH\x00\x12J\n\x08\x64iscrete\x18\x02 \x01(\x0b\x32\x36.roadwork.services.simulator_service.MetaSpaceDiscreteH\x00\x12\x44\n\x05tuple\x18\x03 \x01(\x0b\x32\x33.roadwork.services.simulator_service.MetaSpaceTupleH\x00\x42\x06\n\x04type\"J\n\x14SimulatorStepRequest\x12\x12\n\ninstanceId\x18\x01 \x01(\t\x12\x0e\n\x06\x61\x63tion\x18\x02 \x01(\x05\x12\x0e\n\x06render\x18\x03 \x01(\x08\"\xdd\x03\n\x15SimulatorStepResponse\x12\x0e\n\x06reward\x18\x01 \x01(\x02\x12\x0e\n\x06isDone\x18\x02 \x01(\x08\x12R\n\x04info\x18\x03 \x03(\x0b\x32\x44.roadwork.services.simulator_service.SimulatorStepResponse.InfoEntry\x12\\\n\x13observationDiscrete\x18\x04 \x01(\x0b\x32=.roadwork.services.simulator_service.SpaceObservationDiscreteH\x00\x12\\\n\x13observationBoxFloat\x18\x05 \x01(\x0b\x32=.roadwork.services.simulator_service.SpaceObservationBoxFloatH\x00\x12X\n\x11observationBoxInt\x18\x06 \x01(\x0b\x32;.roadwork.services.simulator_service.SpaceObservationBoxIntH\x00\x1a+\n\tInfoEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\r\n\x0bobservation\"/\n\x18SpaceObservationDiscrete\x12\x13\n\x0bobservation\x18\x01 \x01(\x05\"/\n\x18SpaceObservationBoxFloat\x12\x13\n\x0bobservation\x18\x01 \x03(\x02\"-\n\x16SpaceObservationBoxInt\x12\x13\n\x0bobservation\x18\x01 \x03(\x11\"+\n\x15SimulatorResetRequest\x12\x12\n\ninstanceId\x18\x01 \x01(\t\"-\n\x16SimulatorResetResponse\x12\x13\n\x0bobservation\x18\x01 \x03(\x01\":\n\x16SimulatorRenderRequest\x12\x12\n\ninstanceId\x18\x01 \x01(\t\x12\x0c\n\x04mode\x18\x02 \x01(\t\"\x19\n\x17SimulatorRenderResponse\"+\n\x15SimulatorCloseRequest\x12\x12\n\ninstanceId\x18\x01 \x01(\t\"\x18\n\x16SimulatorCloseResponse\"\'\n\x16SimulatorCreateRequest\x12\r\n\x05\x65nvId\x18\x01 \x01(\t\"-\n\x17SimulatorCreateResponse\x12\x12\n\ninstanceId\x18\x01 \x01(\t\"7\n!SimulatorActionSpaceSampleRequest\x12\x12\n\ninstanceId\x18\x01 \x01(\t\"4\n\"SimulatorActionSpaceSampleResponse\x12\x0e\n\x06\x61\x63tion\x18\x01 \x01(\x05\"5\n\x1fSimulatorActionSpaceInfoRequest\x12\x12\n\ninstanceId\x18\x01 \x01(\t\"\xd9\x01\n SimulatorActionSpaceInfoResponse\x12\x0c\n\x04name\x18\x01 \x01(\t\x12N\n\x0ctypeDiscrete\x18\x02 \x01(\x0b\x32\x36.roadwork.services.simulator_service.SpaceTypeDiscreteH\x00\x12\x44\n\x07typeBox\x18\x03 \x01(\x0b\x32\x31.roadwork.services.simulator_service.SpaceTypeBoxH\x00\x42\x11\n\x0f\x61\x63tionSpaceType\":\n$SimulatorObservationSpaceInfoRequest\x12\x12\n\ninstanceId\x18\x01 \x01(\t\"\xde\x01\n%SimulatorObservationSpaceInfoResponse\x12\x0c\n\x04name\x18\x01 \x01(\t\x12N\n\x0ctypeDiscrete\x18\x02 \x01(\x0b\x32\x36.roadwork.services.simulator_service.SpaceTypeDiscreteH\x00\x12\x44\n\x07typeBox\x18\x03 \x01(\x0b\x32\x31.roadwork.services.simulator_service.SpaceTypeBoxH\x00\x42\x11\n\x0fobservationType\"\x1e\n\x11SpaceTypeDiscrete\x12\t\n\x01n\x18\x01 \x01(\x05\"8\n\x0cSpaceTypeBox\x12\r\n\x05shape\x18\x01 \x03(\x05\x12\x0b\n\x03low\x18\x02 \x03(\x01\x12\x0c\n\x04high\x18\x03 \x03(\x01\x32\x91\x0b\n\tSimulator\x12\x85\x01\n\x06\x43reate\x12;.roadwork.services.simulator_service.SimulatorCreateRequest\x1a<.roadwork.services.simulator_service.SimulatorCreateResponse\"\x00\x12\x7f\n\x04Step\x12\x39.roadwork.services.simulator_service.SimulatorStepRequest\x1a:.roadwork.services.simulator_service.SimulatorStepResponse\"\x00\x12\x82\x01\n\x05Reset\x12:.roadwork.services.simulator_service.SimulatorResetRequest\x1a;.roadwork.services.simulator_service.SimulatorResetResponse\"\x00\x12\x85\x01\n\x06Render\x12;.roadwork.services.simulator_service.SimulatorRenderRequest\x1a<.roadwork.services.simulator_service.SimulatorRenderResponse\"\x00\x12\x82\x01\n\x05\x43lose\x12:.roadwork.services.simulator_service.SimulatorCloseRequest\x1a;.roadwork.services.simulator_service.SimulatorCloseResponse\"\x00\x12\xa6\x01\n\x11\x41\x63tionSpaceSample\x12\x46.roadwork.services.simulator_service.SimulatorActionSpaceSampleRequest\x1aG.roadwork.services.simulator_service.SimulatorActionSpaceSampleResponse\"\x00\x12\xa0\x01\n\x0f\x41\x63tionSpaceInfo\x12\x44.roadwork.services.simulator_service.SimulatorActionSpaceInfoRequest\x1a\x45.roadwork.services.simulator_service.SimulatorActionSpaceInfoResponse\"\x00\x12\xaf\x01\n\x14ObservationSpaceInfo\x12I.roadwork.services.simulator_service.SimulatorObservationSpaceInfoRequest\x1aJ.roadwork.services.simulator_service.SimulatorObservationSpaceInfoResponse\"\x00\x12u\n\x0cMonitorStart\x12\x30.roadwork.services.simulator_service.BaseRequest\x1a\x31.roadwork.services.simulator_service.BaseResponse\"\x00\x12t\n\x0bMonitorStop\x12\x30.roadwork.services.simulator_service.BaseRequest\x1a\x31.roadwork.services.simulator_service.BaseResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x18services/simulator.proto\x12#roadwork.services.simulator_service\"!\n\x0b\x42\x61seRequest\x12\x12\n\ninstanceId\x18\x01 \x01(\t\"\x0e\n\x0c\x42\x61seResponse\"\x8c\x01\n\x0cMetaSpaceBox\x12\x12\n\ndimensions\x18\x01 \x03(\r\x12[\n\x0f\x64imensionDouble\x18\x02 \x01(\x0b\x32@.roadwork.services.simulator_service.MetaSpaceBoxDimensionDoubleH\x00\x42\x0b\n\tdimension\"M\n\x1bMetaSpaceBoxDimensionDouble\x12\x0b\n\x03low\x18\x01 \x03(\x01\x12\x0c\n\x04high\x18\x02 \x03(\x01\x12\x13\n\x0bobservation\x18\x03 \x03(\x01\"\x1e\n\x11MetaSpaceDiscrete\x12\t\n\x01n\x18\x01 \x01(\r\"W\n\x0eMetaSpaceTuple\x12\x45\n\x06spaces\x18\x01 \x03(\x0b\x32\x35.roadwork.services.simulator_service.MetaSpaceWrapper\"\xee\x01\n\x10MetaSpaceWrapper\x12@\n\x03\x62ox\x18\x01 \x01(\x0b\x32\x31.roadwork.services.simulator_service.MetaSpaceBoxH\x00\x12J\n\x08\x64iscrete\x18\x02 \x01(\x0b\x32\x36.roadwork.services.simulator_service.MetaSpaceDiscreteH\x00\x12\x44\n\x05tuple\x18\x03 \x01(\x0b\x32\x33.roadwork.services.simulator_service.MetaSpaceTupleH\x00\x42\x06\n\x04type\"J\n\x14SimulatorStepRequest\x12\x12\n\ninstanceId\x18\x01 \x01(\t\x12\x0e\n\x06\x61\x63tion\x18\x02 \x01(\x05\x12\x0e\n\x06render\x18\x03 \x01(\x08\"\xf9\x02\n\x15SimulatorStepResponse\x12\x0e\n\x06reward\x18\x01 \x01(\x02\x12\x0e\n\x06isDone\x18\x02 \x01(\x08\x12R\n\x04info\x18\x03 \x03(\x0b\x32\x44.roadwork.services.simulator_service.SimulatorStepResponse.InfoEntry\x12\\\n\x13observationDiscrete\x18\x04 \x01(\x0b\x32=.roadwork.services.simulator_service.SpaceObservationDiscreteH\x00\x12R\n\x0eobservationBox\x18\x05 \x01(\x0b\x32\x38.roadwork.services.simulator_service.SpaceObservationBoxH\x00\x1a+\n\tInfoEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\r\n\x0bobservation\"/\n\x18SpaceObservationDiscrete\x12\x13\n\x0bobservation\x18\x01 \x01(\x05\"*\n\x13SpaceObservationBox\x12\x13\n\x0bobservation\x18\x01 \x03(\x01\"+\n\x15SimulatorResetRequest\x12\x12\n\ninstanceId\x18\x01 \x01(\t\"-\n\x16SimulatorResetResponse\x12\x13\n\x0bobservation\x18\x01 \x03(\x01\":\n\x16SimulatorRenderRequest\x12\x12\n\ninstanceId\x18\x01 \x01(\t\x12\x0c\n\x04mode\x18\x02 \x01(\t\"\x19\n\x17SimulatorRenderResponse\"+\n\x15SimulatorCloseRequest\x12\x12\n\ninstanceId\x18\x01 \x01(\t\"\x18\n\x16SimulatorCloseResponse\"\'\n\x16SimulatorCreateRequest\x12\r\n\x05\x65nvId\x18\x01 \x01(\t\"-\n\x17SimulatorCreateResponse\x12\x12\n\ninstanceId\x18\x01 \x01(\t\"7\n!SimulatorActionSpaceSampleRequest\x12\x12\n\ninstanceId\x18\x01 \x01(\t\"5\n\x1fSimulatorActionSpaceInfoRequest\x12\x12\n\ninstanceId\x18\x01 \x01(\t\":\n$SimulatorObservationSpaceInfoRequest\x12\x12\n\ninstanceId\x18\x01 \x01(\t\"4\n\"SimulatorActionSpaceSampleResponse\x12\x0e\n\x06\x61\x63tion\x18\x01 \x01(\x05\"i\n SimulatorActionSpaceInfoResponse\x12\x45\n\x06result\x18\x01 \x01(\x0b\x32\x35.roadwork.services.simulator_service.MetaSpaceWrapper\"n\n%SimulatorObservationSpaceInfoResponse\x12\x45\n\x06result\x18\x01 \x01(\x0b\x32\x35.roadwork.services.simulator_service.MetaSpaceWrapper2\x91\x0b\n\tSimulator\x12\x85\x01\n\x06\x43reate\x12;.roadwork.services.simulator_service.SimulatorCreateRequest\x1a<.roadwork.services.simulator_service.SimulatorCreateResponse\"\x00\x12\x7f\n\x04Step\x12\x39.roadwork.services.simulator_service.SimulatorStepRequest\x1a:.roadwork.services.simulator_service.SimulatorStepResponse\"\x00\x12\x82\x01\n\x05Reset\x12:.roadwork.services.simulator_service.SimulatorResetRequest\x1a;.roadwork.services.simulator_service.SimulatorResetResponse\"\x00\x12\x85\x01\n\x06Render\x12;.roadwork.services.simulator_service.SimulatorRenderRequest\x1a<.roadwork.services.simulator_service.SimulatorRenderResponse\"\x00\x12\x82\x01\n\x05\x43lose\x12:.roadwork.services.simulator_service.SimulatorCloseRequest\x1a;.roadwork.services.simulator_service.SimulatorCloseResponse\"\x00\x12\xa6\x01\n\x11\x41\x63tionSpaceSample\x12\x46.roadwork.services.simulator_service.SimulatorActionSpaceSampleRequest\x1aG.roadwork.services.simulator_service.SimulatorActionSpaceSampleResponse\"\x00\x12\xa0\x01\n\x0f\x41\x63tionSpaceInfo\x12\x44.roadwork.services.simulator_service.SimulatorActionSpaceInfoRequest\x1a\x45.roadwork.services.simulator_service.SimulatorActionSpaceInfoResponse\"\x00\x12\xaf\x01\n\x14ObservationSpaceInfo\x12I.roadwork.services.simulator_service.SimulatorObservationSpaceInfoRequest\x1aJ.roadwork.services.simulator_service.SimulatorObservationSpaceInfoResponse\"\x00\x12u\n\x0cMonitorStart\x12\x30.roadwork.services.simulator_service.BaseRequest\x1a\x31.roadwork.services.simulator_service.BaseResponse\"\x00\x12t\n\x0bMonitorStop\x12\x30.roadwork.services.simulator_service.BaseRequest\x1a\x31.roadwork.services.simulator_service.BaseResponse\"\x00\x62\x06proto3')
 )
 
 
@@ -225,33 +225,33 @@ _METASPACETUPLE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=370,
-  serialized_end=462,
+  serialized_end=457,
 )
 
 
-_METASPACETUPLEWRAPPER = _descriptor.Descriptor(
-  name='MetaSpaceTupleWrapper',
-  full_name='roadwork.services.simulator_service.MetaSpaceTupleWrapper',
+_METASPACEWRAPPER = _descriptor.Descriptor(
+  name='MetaSpaceWrapper',
+  full_name='roadwork.services.simulator_service.MetaSpaceWrapper',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='box', full_name='roadwork.services.simulator_service.MetaSpaceTupleWrapper.box', index=0,
+      name='box', full_name='roadwork.services.simulator_service.MetaSpaceWrapper.box', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='discrete', full_name='roadwork.services.simulator_service.MetaSpaceTupleWrapper.discrete', index=1,
+      name='discrete', full_name='roadwork.services.simulator_service.MetaSpaceWrapper.discrete', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='tuple', full_name='roadwork.services.simulator_service.MetaSpaceTupleWrapper.tuple', index=2,
+      name='tuple', full_name='roadwork.services.simulator_service.MetaSpaceWrapper.tuple', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -269,11 +269,11 @@ _METASPACETUPLEWRAPPER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
     _descriptor.OneofDescriptor(
-      name='type', full_name='roadwork.services.simulator_service.MetaSpaceTupleWrapper.type',
+      name='type', full_name='roadwork.services.simulator_service.MetaSpaceWrapper.type',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=465,
-  serialized_end=708,
+  serialized_start=460,
+  serialized_end=698,
 )
 
 
@@ -317,8 +317,8 @@ _SIMULATORSTEPREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=710,
-  serialized_end=784,
+  serialized_start=700,
+  serialized_end=774,
 )
 
 
@@ -355,8 +355,8 @@ _SIMULATORSTEPRESPONSE_INFOENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1206,
-  serialized_end=1249,
+  serialized_start=1096,
+  serialized_end=1139,
 )
 
 _SIMULATORSTEPRESPONSE = _descriptor.Descriptor(
@@ -395,15 +395,8 @@ _SIMULATORSTEPRESPONSE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='observationBoxFloat', full_name='roadwork.services.simulator_service.SimulatorStepResponse.observationBoxFloat', index=4,
+      name='observationBox', full_name='roadwork.services.simulator_service.SimulatorStepResponse.observationBox', index=4,
       number=5, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='observationBoxInt', full_name='roadwork.services.simulator_service.SimulatorStepResponse.observationBoxInt', index=5,
-      number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -423,8 +416,8 @@ _SIMULATORSTEPRESPONSE = _descriptor.Descriptor(
       name='observation', full_name='roadwork.services.simulator_service.SimulatorStepResponse.observation',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=787,
-  serialized_end=1264,
+  serialized_start=777,
+  serialized_end=1154,
 )
 
 
@@ -454,21 +447,21 @@ _SPACEOBSERVATIONDISCRETE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1266,
-  serialized_end=1313,
+  serialized_start=1156,
+  serialized_end=1203,
 )
 
 
-_SPACEOBSERVATIONBOXFLOAT = _descriptor.Descriptor(
-  name='SpaceObservationBoxFloat',
-  full_name='roadwork.services.simulator_service.SpaceObservationBoxFloat',
+_SPACEOBSERVATIONBOX = _descriptor.Descriptor(
+  name='SpaceObservationBox',
+  full_name='roadwork.services.simulator_service.SpaceObservationBox',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='observation', full_name='roadwork.services.simulator_service.SpaceObservationBoxFloat.observation', index=0,
-      number=1, type=2, cpp_type=6, label=3,
+      name='observation', full_name='roadwork.services.simulator_service.SpaceObservationBox.observation', index=0,
+      number=1, type=1, cpp_type=5, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -485,39 +478,8 @@ _SPACEOBSERVATIONBOXFLOAT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1315,
-  serialized_end=1362,
-)
-
-
-_SPACEOBSERVATIONBOXINT = _descriptor.Descriptor(
-  name='SpaceObservationBoxInt',
-  full_name='roadwork.services.simulator_service.SpaceObservationBoxInt',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='observation', full_name='roadwork.services.simulator_service.SpaceObservationBoxInt.observation', index=0,
-      number=1, type=17, cpp_type=1, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1364,
-  serialized_end=1409,
+  serialized_start=1205,
+  serialized_end=1247,
 )
 
 
@@ -547,8 +509,8 @@ _SIMULATORRESETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1411,
-  serialized_end=1454,
+  serialized_start=1249,
+  serialized_end=1292,
 )
 
 
@@ -578,8 +540,8 @@ _SIMULATORRESETRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1456,
-  serialized_end=1501,
+  serialized_start=1294,
+  serialized_end=1339,
 )
 
 
@@ -616,8 +578,8 @@ _SIMULATORRENDERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1503,
-  serialized_end=1561,
+  serialized_start=1341,
+  serialized_end=1399,
 )
 
 
@@ -640,8 +602,8 @@ _SIMULATORRENDERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1563,
-  serialized_end=1588,
+  serialized_start=1401,
+  serialized_end=1426,
 )
 
 
@@ -671,8 +633,8 @@ _SIMULATORCLOSEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1590,
-  serialized_end=1633,
+  serialized_start=1428,
+  serialized_end=1471,
 )
 
 
@@ -695,8 +657,8 @@ _SIMULATORCLOSERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1635,
-  serialized_end=1659,
+  serialized_start=1473,
+  serialized_end=1497,
 )
 
 
@@ -726,8 +688,8 @@ _SIMULATORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1661,
-  serialized_end=1700,
+  serialized_start=1499,
+  serialized_end=1538,
 )
 
 
@@ -757,8 +719,8 @@ _SIMULATORCREATERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1702,
-  serialized_end=1747,
+  serialized_start=1540,
+  serialized_end=1585,
 )
 
 
@@ -788,39 +750,8 @@ _SIMULATORACTIONSPACESAMPLEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1749,
-  serialized_end=1804,
-)
-
-
-_SIMULATORACTIONSPACESAMPLERESPONSE = _descriptor.Descriptor(
-  name='SimulatorActionSpaceSampleResponse',
-  full_name='roadwork.services.simulator_service.SimulatorActionSpaceSampleResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='action', full_name='roadwork.services.simulator_service.SimulatorActionSpaceSampleResponse.action', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1806,
-  serialized_end=1858,
+  serialized_start=1587,
+  serialized_end=1642,
 )
 
 
@@ -850,56 +781,8 @@ _SIMULATORACTIONSPACEINFOREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1860,
-  serialized_end=1913,
-)
-
-
-_SIMULATORACTIONSPACEINFORESPONSE = _descriptor.Descriptor(
-  name='SimulatorActionSpaceInfoResponse',
-  full_name='roadwork.services.simulator_service.SimulatorActionSpaceInfoResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='name', full_name='roadwork.services.simulator_service.SimulatorActionSpaceInfoResponse.name', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='typeDiscrete', full_name='roadwork.services.simulator_service.SimulatorActionSpaceInfoResponse.typeDiscrete', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='typeBox', full_name='roadwork.services.simulator_service.SimulatorActionSpaceInfoResponse.typeBox', index=2,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-    _descriptor.OneofDescriptor(
-      name='actionSpaceType', full_name='roadwork.services.simulator_service.SimulatorActionSpaceInfoResponse.actionSpaceType',
-      index=0, containing_type=None, fields=[]),
-  ],
-  serialized_start=1916,
-  serialized_end=2133,
+  serialized_start=1644,
+  serialized_end=1697,
 )
 
 
@@ -929,68 +812,20 @@ _SIMULATOROBSERVATIONSPACEINFOREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2135,
-  serialized_end=2193,
+  serialized_start=1699,
+  serialized_end=1757,
 )
 
 
-_SIMULATOROBSERVATIONSPACEINFORESPONSE = _descriptor.Descriptor(
-  name='SimulatorObservationSpaceInfoResponse',
-  full_name='roadwork.services.simulator_service.SimulatorObservationSpaceInfoResponse',
+_SIMULATORACTIONSPACESAMPLERESPONSE = _descriptor.Descriptor(
+  name='SimulatorActionSpaceSampleResponse',
+  full_name='roadwork.services.simulator_service.SimulatorActionSpaceSampleResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='name', full_name='roadwork.services.simulator_service.SimulatorObservationSpaceInfoResponse.name', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='typeDiscrete', full_name='roadwork.services.simulator_service.SimulatorObservationSpaceInfoResponse.typeDiscrete', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='typeBox', full_name='roadwork.services.simulator_service.SimulatorObservationSpaceInfoResponse.typeBox', index=2,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-    _descriptor.OneofDescriptor(
-      name='observationType', full_name='roadwork.services.simulator_service.SimulatorObservationSpaceInfoResponse.observationType',
-      index=0, containing_type=None, fields=[]),
-  ],
-  serialized_start=2196,
-  serialized_end=2418,
-)
-
-
-_SPACETYPEDISCRETE = _descriptor.Descriptor(
-  name='SpaceTypeDiscrete',
-  full_name='roadwork.services.simulator_service.SpaceTypeDiscrete',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='n', full_name='roadwork.services.simulator_service.SpaceTypeDiscrete.n', index=0,
+      name='action', full_name='roadwork.services.simulator_service.SimulatorActionSpaceSampleResponse.action', index=0,
       number=1, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -1008,36 +843,22 @@ _SPACETYPEDISCRETE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2420,
-  serialized_end=2450,
+  serialized_start=1759,
+  serialized_end=1811,
 )
 
 
-_SPACETYPEBOX = _descriptor.Descriptor(
-  name='SpaceTypeBox',
-  full_name='roadwork.services.simulator_service.SpaceTypeBox',
+_SIMULATORACTIONSPACEINFORESPONSE = _descriptor.Descriptor(
+  name='SimulatorActionSpaceInfoResponse',
+  full_name='roadwork.services.simulator_service.SimulatorActionSpaceInfoResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='shape', full_name='roadwork.services.simulator_service.SpaceTypeBox.shape', index=0,
-      number=1, type=5, cpp_type=1, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='low', full_name='roadwork.services.simulator_service.SpaceTypeBox.low', index=1,
-      number=2, type=1, cpp_type=5, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='high', full_name='roadwork.services.simulator_service.SpaceTypeBox.high', index=2,
-      number=3, type=1, cpp_type=5, label=3,
-      has_default_value=False, default_value=[],
+      name='result', full_name='roadwork.services.simulator_service.SimulatorActionSpaceInfoResponse.result', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -1053,69 +874,81 @@ _SPACETYPEBOX = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2452,
-  serialized_end=2508,
+  serialized_start=1813,
+  serialized_end=1918,
+)
+
+
+_SIMULATOROBSERVATIONSPACEINFORESPONSE = _descriptor.Descriptor(
+  name='SimulatorObservationSpaceInfoResponse',
+  full_name='roadwork.services.simulator_service.SimulatorObservationSpaceInfoResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='result', full_name='roadwork.services.simulator_service.SimulatorObservationSpaceInfoResponse.result', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1920,
+  serialized_end=2030,
 )
 
 _METASPACEBOX.fields_by_name['dimensionDouble'].message_type = _METASPACEBOXDIMENSIONDOUBLE
 _METASPACEBOX.oneofs_by_name['dimension'].fields.append(
   _METASPACEBOX.fields_by_name['dimensionDouble'])
 _METASPACEBOX.fields_by_name['dimensionDouble'].containing_oneof = _METASPACEBOX.oneofs_by_name['dimension']
-_METASPACETUPLE.fields_by_name['spaces'].message_type = _METASPACETUPLEWRAPPER
-_METASPACETUPLEWRAPPER.fields_by_name['box'].message_type = _METASPACEBOX
-_METASPACETUPLEWRAPPER.fields_by_name['discrete'].message_type = _METASPACEDISCRETE
-_METASPACETUPLEWRAPPER.fields_by_name['tuple'].message_type = _METASPACETUPLE
-_METASPACETUPLEWRAPPER.oneofs_by_name['type'].fields.append(
-  _METASPACETUPLEWRAPPER.fields_by_name['box'])
-_METASPACETUPLEWRAPPER.fields_by_name['box'].containing_oneof = _METASPACETUPLEWRAPPER.oneofs_by_name['type']
-_METASPACETUPLEWRAPPER.oneofs_by_name['type'].fields.append(
-  _METASPACETUPLEWRAPPER.fields_by_name['discrete'])
-_METASPACETUPLEWRAPPER.fields_by_name['discrete'].containing_oneof = _METASPACETUPLEWRAPPER.oneofs_by_name['type']
-_METASPACETUPLEWRAPPER.oneofs_by_name['type'].fields.append(
-  _METASPACETUPLEWRAPPER.fields_by_name['tuple'])
-_METASPACETUPLEWRAPPER.fields_by_name['tuple'].containing_oneof = _METASPACETUPLEWRAPPER.oneofs_by_name['type']
+_METASPACETUPLE.fields_by_name['spaces'].message_type = _METASPACEWRAPPER
+_METASPACEWRAPPER.fields_by_name['box'].message_type = _METASPACEBOX
+_METASPACEWRAPPER.fields_by_name['discrete'].message_type = _METASPACEDISCRETE
+_METASPACEWRAPPER.fields_by_name['tuple'].message_type = _METASPACETUPLE
+_METASPACEWRAPPER.oneofs_by_name['type'].fields.append(
+  _METASPACEWRAPPER.fields_by_name['box'])
+_METASPACEWRAPPER.fields_by_name['box'].containing_oneof = _METASPACEWRAPPER.oneofs_by_name['type']
+_METASPACEWRAPPER.oneofs_by_name['type'].fields.append(
+  _METASPACEWRAPPER.fields_by_name['discrete'])
+_METASPACEWRAPPER.fields_by_name['discrete'].containing_oneof = _METASPACEWRAPPER.oneofs_by_name['type']
+_METASPACEWRAPPER.oneofs_by_name['type'].fields.append(
+  _METASPACEWRAPPER.fields_by_name['tuple'])
+_METASPACEWRAPPER.fields_by_name['tuple'].containing_oneof = _METASPACEWRAPPER.oneofs_by_name['type']
 _SIMULATORSTEPRESPONSE_INFOENTRY.containing_type = _SIMULATORSTEPRESPONSE
 _SIMULATORSTEPRESPONSE.fields_by_name['info'].message_type = _SIMULATORSTEPRESPONSE_INFOENTRY
 _SIMULATORSTEPRESPONSE.fields_by_name['observationDiscrete'].message_type = _SPACEOBSERVATIONDISCRETE
-_SIMULATORSTEPRESPONSE.fields_by_name['observationBoxFloat'].message_type = _SPACEOBSERVATIONBOXFLOAT
-_SIMULATORSTEPRESPONSE.fields_by_name['observationBoxInt'].message_type = _SPACEOBSERVATIONBOXINT
+_SIMULATORSTEPRESPONSE.fields_by_name['observationBox'].message_type = _SPACEOBSERVATIONBOX
 _SIMULATORSTEPRESPONSE.oneofs_by_name['observation'].fields.append(
   _SIMULATORSTEPRESPONSE.fields_by_name['observationDiscrete'])
 _SIMULATORSTEPRESPONSE.fields_by_name['observationDiscrete'].containing_oneof = _SIMULATORSTEPRESPONSE.oneofs_by_name['observation']
 _SIMULATORSTEPRESPONSE.oneofs_by_name['observation'].fields.append(
-  _SIMULATORSTEPRESPONSE.fields_by_name['observationBoxFloat'])
-_SIMULATORSTEPRESPONSE.fields_by_name['observationBoxFloat'].containing_oneof = _SIMULATORSTEPRESPONSE.oneofs_by_name['observation']
-_SIMULATORSTEPRESPONSE.oneofs_by_name['observation'].fields.append(
-  _SIMULATORSTEPRESPONSE.fields_by_name['observationBoxInt'])
-_SIMULATORSTEPRESPONSE.fields_by_name['observationBoxInt'].containing_oneof = _SIMULATORSTEPRESPONSE.oneofs_by_name['observation']
-_SIMULATORACTIONSPACEINFORESPONSE.fields_by_name['typeDiscrete'].message_type = _SPACETYPEDISCRETE
-_SIMULATORACTIONSPACEINFORESPONSE.fields_by_name['typeBox'].message_type = _SPACETYPEBOX
-_SIMULATORACTIONSPACEINFORESPONSE.oneofs_by_name['actionSpaceType'].fields.append(
-  _SIMULATORACTIONSPACEINFORESPONSE.fields_by_name['typeDiscrete'])
-_SIMULATORACTIONSPACEINFORESPONSE.fields_by_name['typeDiscrete'].containing_oneof = _SIMULATORACTIONSPACEINFORESPONSE.oneofs_by_name['actionSpaceType']
-_SIMULATORACTIONSPACEINFORESPONSE.oneofs_by_name['actionSpaceType'].fields.append(
-  _SIMULATORACTIONSPACEINFORESPONSE.fields_by_name['typeBox'])
-_SIMULATORACTIONSPACEINFORESPONSE.fields_by_name['typeBox'].containing_oneof = _SIMULATORACTIONSPACEINFORESPONSE.oneofs_by_name['actionSpaceType']
-_SIMULATOROBSERVATIONSPACEINFORESPONSE.fields_by_name['typeDiscrete'].message_type = _SPACETYPEDISCRETE
-_SIMULATOROBSERVATIONSPACEINFORESPONSE.fields_by_name['typeBox'].message_type = _SPACETYPEBOX
-_SIMULATOROBSERVATIONSPACEINFORESPONSE.oneofs_by_name['observationType'].fields.append(
-  _SIMULATOROBSERVATIONSPACEINFORESPONSE.fields_by_name['typeDiscrete'])
-_SIMULATOROBSERVATIONSPACEINFORESPONSE.fields_by_name['typeDiscrete'].containing_oneof = _SIMULATOROBSERVATIONSPACEINFORESPONSE.oneofs_by_name['observationType']
-_SIMULATOROBSERVATIONSPACEINFORESPONSE.oneofs_by_name['observationType'].fields.append(
-  _SIMULATOROBSERVATIONSPACEINFORESPONSE.fields_by_name['typeBox'])
-_SIMULATOROBSERVATIONSPACEINFORESPONSE.fields_by_name['typeBox'].containing_oneof = _SIMULATOROBSERVATIONSPACEINFORESPONSE.oneofs_by_name['observationType']
+  _SIMULATORSTEPRESPONSE.fields_by_name['observationBox'])
+_SIMULATORSTEPRESPONSE.fields_by_name['observationBox'].containing_oneof = _SIMULATORSTEPRESPONSE.oneofs_by_name['observation']
+_SIMULATORACTIONSPACEINFORESPONSE.fields_by_name['result'].message_type = _METASPACEWRAPPER
+_SIMULATOROBSERVATIONSPACEINFORESPONSE.fields_by_name['result'].message_type = _METASPACEWRAPPER
 DESCRIPTOR.message_types_by_name['BaseRequest'] = _BASEREQUEST
 DESCRIPTOR.message_types_by_name['BaseResponse'] = _BASERESPONSE
 DESCRIPTOR.message_types_by_name['MetaSpaceBox'] = _METASPACEBOX
 DESCRIPTOR.message_types_by_name['MetaSpaceBoxDimensionDouble'] = _METASPACEBOXDIMENSIONDOUBLE
 DESCRIPTOR.message_types_by_name['MetaSpaceDiscrete'] = _METASPACEDISCRETE
 DESCRIPTOR.message_types_by_name['MetaSpaceTuple'] = _METASPACETUPLE
-DESCRIPTOR.message_types_by_name['MetaSpaceTupleWrapper'] = _METASPACETUPLEWRAPPER
+DESCRIPTOR.message_types_by_name['MetaSpaceWrapper'] = _METASPACEWRAPPER
 DESCRIPTOR.message_types_by_name['SimulatorStepRequest'] = _SIMULATORSTEPREQUEST
 DESCRIPTOR.message_types_by_name['SimulatorStepResponse'] = _SIMULATORSTEPRESPONSE
 DESCRIPTOR.message_types_by_name['SpaceObservationDiscrete'] = _SPACEOBSERVATIONDISCRETE
-DESCRIPTOR.message_types_by_name['SpaceObservationBoxFloat'] = _SPACEOBSERVATIONBOXFLOAT
-DESCRIPTOR.message_types_by_name['SpaceObservationBoxInt'] = _SPACEOBSERVATIONBOXINT
+DESCRIPTOR.message_types_by_name['SpaceObservationBox'] = _SPACEOBSERVATIONBOX
 DESCRIPTOR.message_types_by_name['SimulatorResetRequest'] = _SIMULATORRESETREQUEST
 DESCRIPTOR.message_types_by_name['SimulatorResetResponse'] = _SIMULATORRESETRESPONSE
 DESCRIPTOR.message_types_by_name['SimulatorRenderRequest'] = _SIMULATORRENDERREQUEST
@@ -1125,13 +958,11 @@ DESCRIPTOR.message_types_by_name['SimulatorCloseResponse'] = _SIMULATORCLOSERESP
 DESCRIPTOR.message_types_by_name['SimulatorCreateRequest'] = _SIMULATORCREATEREQUEST
 DESCRIPTOR.message_types_by_name['SimulatorCreateResponse'] = _SIMULATORCREATERESPONSE
 DESCRIPTOR.message_types_by_name['SimulatorActionSpaceSampleRequest'] = _SIMULATORACTIONSPACESAMPLEREQUEST
-DESCRIPTOR.message_types_by_name['SimulatorActionSpaceSampleResponse'] = _SIMULATORACTIONSPACESAMPLERESPONSE
 DESCRIPTOR.message_types_by_name['SimulatorActionSpaceInfoRequest'] = _SIMULATORACTIONSPACEINFOREQUEST
-DESCRIPTOR.message_types_by_name['SimulatorActionSpaceInfoResponse'] = _SIMULATORACTIONSPACEINFORESPONSE
 DESCRIPTOR.message_types_by_name['SimulatorObservationSpaceInfoRequest'] = _SIMULATOROBSERVATIONSPACEINFOREQUEST
+DESCRIPTOR.message_types_by_name['SimulatorActionSpaceSampleResponse'] = _SIMULATORACTIONSPACESAMPLERESPONSE
+DESCRIPTOR.message_types_by_name['SimulatorActionSpaceInfoResponse'] = _SIMULATORACTIONSPACEINFORESPONSE
 DESCRIPTOR.message_types_by_name['SimulatorObservationSpaceInfoResponse'] = _SIMULATOROBSERVATIONSPACEINFORESPONSE
-DESCRIPTOR.message_types_by_name['SpaceTypeDiscrete'] = _SPACETYPEDISCRETE
-DESCRIPTOR.message_types_by_name['SpaceTypeBox'] = _SPACETYPEBOX
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 BaseRequest = _reflection.GeneratedProtocolMessageType('BaseRequest', (_message.Message,), {
@@ -1176,12 +1007,12 @@ MetaSpaceTuple = _reflection.GeneratedProtocolMessageType('MetaSpaceTuple', (_me
   })
 _sym_db.RegisterMessage(MetaSpaceTuple)
 
-MetaSpaceTupleWrapper = _reflection.GeneratedProtocolMessageType('MetaSpaceTupleWrapper', (_message.Message,), {
-  'DESCRIPTOR' : _METASPACETUPLEWRAPPER,
+MetaSpaceWrapper = _reflection.GeneratedProtocolMessageType('MetaSpaceWrapper', (_message.Message,), {
+  'DESCRIPTOR' : _METASPACEWRAPPER,
   '__module__' : 'services.simulator_pb2'
-  # @@protoc_insertion_point(class_scope:roadwork.services.simulator_service.MetaSpaceTupleWrapper)
+  # @@protoc_insertion_point(class_scope:roadwork.services.simulator_service.MetaSpaceWrapper)
   })
-_sym_db.RegisterMessage(MetaSpaceTupleWrapper)
+_sym_db.RegisterMessage(MetaSpaceWrapper)
 
 SimulatorStepRequest = _reflection.GeneratedProtocolMessageType('SimulatorStepRequest', (_message.Message,), {
   'DESCRIPTOR' : _SIMULATORSTEPREQUEST,
@@ -1212,19 +1043,12 @@ SpaceObservationDiscrete = _reflection.GeneratedProtocolMessageType('SpaceObserv
   })
 _sym_db.RegisterMessage(SpaceObservationDiscrete)
 
-SpaceObservationBoxFloat = _reflection.GeneratedProtocolMessageType('SpaceObservationBoxFloat', (_message.Message,), {
-  'DESCRIPTOR' : _SPACEOBSERVATIONBOXFLOAT,
+SpaceObservationBox = _reflection.GeneratedProtocolMessageType('SpaceObservationBox', (_message.Message,), {
+  'DESCRIPTOR' : _SPACEOBSERVATIONBOX,
   '__module__' : 'services.simulator_pb2'
-  # @@protoc_insertion_point(class_scope:roadwork.services.simulator_service.SpaceObservationBoxFloat)
+  # @@protoc_insertion_point(class_scope:roadwork.services.simulator_service.SpaceObservationBox)
   })
-_sym_db.RegisterMessage(SpaceObservationBoxFloat)
-
-SpaceObservationBoxInt = _reflection.GeneratedProtocolMessageType('SpaceObservationBoxInt', (_message.Message,), {
-  'DESCRIPTOR' : _SPACEOBSERVATIONBOXINT,
-  '__module__' : 'services.simulator_pb2'
-  # @@protoc_insertion_point(class_scope:roadwork.services.simulator_service.SpaceObservationBoxInt)
-  })
-_sym_db.RegisterMessage(SpaceObservationBoxInt)
+_sym_db.RegisterMessage(SpaceObservationBox)
 
 SimulatorResetRequest = _reflection.GeneratedProtocolMessageType('SimulatorResetRequest', (_message.Message,), {
   'DESCRIPTOR' : _SIMULATORRESETREQUEST,
@@ -1289,26 +1113,12 @@ SimulatorActionSpaceSampleRequest = _reflection.GeneratedProtocolMessageType('Si
   })
 _sym_db.RegisterMessage(SimulatorActionSpaceSampleRequest)
 
-SimulatorActionSpaceSampleResponse = _reflection.GeneratedProtocolMessageType('SimulatorActionSpaceSampleResponse', (_message.Message,), {
-  'DESCRIPTOR' : _SIMULATORACTIONSPACESAMPLERESPONSE,
-  '__module__' : 'services.simulator_pb2'
-  # @@protoc_insertion_point(class_scope:roadwork.services.simulator_service.SimulatorActionSpaceSampleResponse)
-  })
-_sym_db.RegisterMessage(SimulatorActionSpaceSampleResponse)
-
 SimulatorActionSpaceInfoRequest = _reflection.GeneratedProtocolMessageType('SimulatorActionSpaceInfoRequest', (_message.Message,), {
   'DESCRIPTOR' : _SIMULATORACTIONSPACEINFOREQUEST,
   '__module__' : 'services.simulator_pb2'
   # @@protoc_insertion_point(class_scope:roadwork.services.simulator_service.SimulatorActionSpaceInfoRequest)
   })
 _sym_db.RegisterMessage(SimulatorActionSpaceInfoRequest)
-
-SimulatorActionSpaceInfoResponse = _reflection.GeneratedProtocolMessageType('SimulatorActionSpaceInfoResponse', (_message.Message,), {
-  'DESCRIPTOR' : _SIMULATORACTIONSPACEINFORESPONSE,
-  '__module__' : 'services.simulator_pb2'
-  # @@protoc_insertion_point(class_scope:roadwork.services.simulator_service.SimulatorActionSpaceInfoResponse)
-  })
-_sym_db.RegisterMessage(SimulatorActionSpaceInfoResponse)
 
 SimulatorObservationSpaceInfoRequest = _reflection.GeneratedProtocolMessageType('SimulatorObservationSpaceInfoRequest', (_message.Message,), {
   'DESCRIPTOR' : _SIMULATOROBSERVATIONSPACEINFOREQUEST,
@@ -1317,26 +1127,26 @@ SimulatorObservationSpaceInfoRequest = _reflection.GeneratedProtocolMessageType(
   })
 _sym_db.RegisterMessage(SimulatorObservationSpaceInfoRequest)
 
+SimulatorActionSpaceSampleResponse = _reflection.GeneratedProtocolMessageType('SimulatorActionSpaceSampleResponse', (_message.Message,), {
+  'DESCRIPTOR' : _SIMULATORACTIONSPACESAMPLERESPONSE,
+  '__module__' : 'services.simulator_pb2'
+  # @@protoc_insertion_point(class_scope:roadwork.services.simulator_service.SimulatorActionSpaceSampleResponse)
+  })
+_sym_db.RegisterMessage(SimulatorActionSpaceSampleResponse)
+
+SimulatorActionSpaceInfoResponse = _reflection.GeneratedProtocolMessageType('SimulatorActionSpaceInfoResponse', (_message.Message,), {
+  'DESCRIPTOR' : _SIMULATORACTIONSPACEINFORESPONSE,
+  '__module__' : 'services.simulator_pb2'
+  # @@protoc_insertion_point(class_scope:roadwork.services.simulator_service.SimulatorActionSpaceInfoResponse)
+  })
+_sym_db.RegisterMessage(SimulatorActionSpaceInfoResponse)
+
 SimulatorObservationSpaceInfoResponse = _reflection.GeneratedProtocolMessageType('SimulatorObservationSpaceInfoResponse', (_message.Message,), {
   'DESCRIPTOR' : _SIMULATOROBSERVATIONSPACEINFORESPONSE,
   '__module__' : 'services.simulator_pb2'
   # @@protoc_insertion_point(class_scope:roadwork.services.simulator_service.SimulatorObservationSpaceInfoResponse)
   })
 _sym_db.RegisterMessage(SimulatorObservationSpaceInfoResponse)
-
-SpaceTypeDiscrete = _reflection.GeneratedProtocolMessageType('SpaceTypeDiscrete', (_message.Message,), {
-  'DESCRIPTOR' : _SPACETYPEDISCRETE,
-  '__module__' : 'services.simulator_pb2'
-  # @@protoc_insertion_point(class_scope:roadwork.services.simulator_service.SpaceTypeDiscrete)
-  })
-_sym_db.RegisterMessage(SpaceTypeDiscrete)
-
-SpaceTypeBox = _reflection.GeneratedProtocolMessageType('SpaceTypeBox', (_message.Message,), {
-  'DESCRIPTOR' : _SPACETYPEBOX,
-  '__module__' : 'services.simulator_pb2'
-  # @@protoc_insertion_point(class_scope:roadwork.services.simulator_service.SpaceTypeBox)
-  })
-_sym_db.RegisterMessage(SpaceTypeBox)
 
 
 _SIMULATORSTEPRESPONSE_INFOENTRY._options = None
@@ -1347,8 +1157,8 @@ _SIMULATOR = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=2511,
-  serialized_end=3936,
+  serialized_start=2033,
+  serialized_end=3458,
   methods=[
   _descriptor.MethodDescriptor(
     name='Create',

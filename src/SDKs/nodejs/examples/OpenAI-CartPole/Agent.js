@@ -55,8 +55,8 @@ class Agent {
 
     for (let i = 0; i < this.numberOfObservations; i++) {
       const bucketSize = bucketSizes[i];
-      const upperBound = this.observationSpaceInfo.high[i];
-      const lowerBound = this.observationSpaceInfo.low[i];
+      const upperBound = this.observationSpaceInfo.dimensionDouble.high[i];
+      const lowerBound = this.observationSpaceInfo.dimensionDouble.low[i];
       buckets.push(new Bucket(bucketSize, lowerBound, upperBound));
     }
 

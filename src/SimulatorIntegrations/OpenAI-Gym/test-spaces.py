@@ -167,7 +167,7 @@ def serializeTuple(t):
         serializedTupleValue = serialize(t)
         serializedTupleValueCN = serializedTupleValue.__class__.__name__
 
-        resultWrapper = simulator_pb2.MetaSpaceTupleWrapper()
+        resultWrapper = simulator_pb2.MetaSpaceWrapper()
 
         if serializedTupleValueCN == 'MetaSpaceDiscrete':
             # resultWrapper.discrete.n = serializedTupleValue.n

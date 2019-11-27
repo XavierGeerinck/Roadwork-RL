@@ -7,6 +7,8 @@ import argparse
 import sys
 import json
 
+import Serializer
+
 import logging
 logger = logging.getLogger('werkzeug')
 logger.setLevel(logging.ERROR)
@@ -123,20 +125,7 @@ class Envs(object):
 
     # A space is an object that can consist out of sub objects
     def _get_space_properties(self, space):
-        return space
-        # print(space)
-        # info = {}
-        # info['name'] = space.__class__.__name__
-        # if info['name'] == 'Discrete':
-        #     info['n'] = space.n
-        # elif info['name'] == 'Box':
-        #     info['shape'] = space.shape
-        #     info['low'] = space.low
-        #     info['high'] = space.high
-        # elif info['name'] == 'HighLow':
-        #     info['num_rows'] = space.num_rows
-        #     info['matrix'] = space.matrix
-        # return info
+        return Serializer.serialize(space)
 
     def monitor_start(self, instance_id, directory, force, resume, video_callable):
         env = self._lookup_env(instance_id)

@@ -39,10 +39,9 @@ class SimulatorServicer(simulator_pb2_grpc.SimulatorServicer):
         # Get the ObservationSpace metadata
         osi = envs.get_observation_space_info(request.instanceId)
 
-        if osi['name'] == 'Discrete':
+        if osi.HasField('discrete'):
             response.observationDiscrete.observation = result[0]
-        elif osi['name'] == 'Box':
-            response.observationBox.dimensions.extend(np.asarray(osi['shape'])) 
+        elif osi.HasField('box'):
             response.observationBox.observation.extend(result[0])
         else:
             logger.error("Unsupported Space Type: %s" % info['name'])
@@ -91,42 +90,13 @@ class SimulatorServicer(simulator_pb2_grpc.SimulatorServicer):
         
     def ActionSpaceInfo(self, request, context):
         response = simulator_pb2.SimulatorActionSpaceInfoResponse()
-
-        info = envs.get_action_space_info(request.instanceId)
-        response.name = info['name']
-
-        if info['name'] == 'Discrete':
-            # response.typeDiscrete = simulator_pb2.ObservationSpaceTypeDiscrete()
-            response.typeDiscrete.n = info['n']
-        elif info['name'] == 'Box':
-            # response.typeBox = simulator_pb2.ObservationSpaceTypeBox()
-            response.typeBox.shape.extend(np.asarray(info['shape'])) # Convert the shape tuple to an array
-            response.typeBox.low.extend(info['low'])
-            response.typeBox.high.extend(info['high'])
-        else:
-            logger.error("Unsupported Space Type: %s" % info['name'])
-            logger.error(info)
-
+        response.result.CopyFrom(envs.get_action_space_info(request.instanceId))
         return response
-        
+    
     def ObservationSpaceInfo(self, request, context):
         response = simulator_pb2.SimulatorObservationSpaceInfoResponse()
-
-        info = envs.get_observation_space_info(request.instanceId)
-        response.name = info['name']
-
-        if info['name'] == 'Discrete':
-            # response.typeDiscrete = simulator_pb2.ObservationSpaceTypeDiscrete()
-            response.typeDiscrete.n = info['n']
-        elif info['name'] == 'Box':
-            # response.typeBox = simulator_pb2.ObservationSpaceTypeBox()
-            response.typeBox.shape.extend(np.asarray(info['shape'])) # Convert the shape tuple to an array
-            response.typeBox.low.extend(info['low'])
-            response.typeBox.high.extend(info['high'])
-        else:
-            logger.error("Unsupported Space Type: %s" % info['name'])
-            logger.error(info)
-
+        response.result.CopyFrom(envs.get_observation_space_info(request.instanceId))
+        print(response)
         return response
         
 

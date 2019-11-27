@@ -18,18 +18,20 @@ class Experiment {
     // Our ActionSpace
     // For CartPole-v0 this returns: { info: { n: 2, name: 'Discrete' } }
     this.actionSpaceInfo = await this.sim.ActionSpaceInfo({ instanceId: this.env.instanceId });
+    this.actionSpaceInfo = this.actionSpaceInfo.result;
 
     // Our ObservationSpace
     // For CartPole-v0 this returns: { info: { high: [XXX], low: [XXX], name: 'Box', shape: [ 4 ] } }
     this.observationSpaceInfo = await this.sim.ObservationSpaceInfo({
         instanceId: this.env.instanceId
     });
+    this.observationSpaceInfo = this.observationSpaceInfo.result;
 
     // Rebind our velocity and angular velocity parameters, the pole should stand still as much as possible
-    this.observationSpaceInfo.typeBox.high[1] = 0.5;
-    this.observationSpaceInfo.typeBox.low[1] = -0.5;
-    this.observationSpaceInfo.typeBox.high[3] = MathUtil.radians(50);
-    this.observationSpaceInfo.typeBox.low[3] = -MathUtil.radians(50);
+    this.observationSpaceInfo.box.dimensionDouble.high[1] = 0.5;
+    this.observationSpaceInfo.box.dimensionDouble.low[1] = -0.5;
+    this.observationSpaceInfo.box.dimensionDouble.high[3] = MathUtil.radians(50);
+    this.observationSpaceInfo.box.dimensionDouble.low[3] = -MathUtil.radians(50);
 
     // Set our learning agent
     console.log('Action Space: ');
@@ -38,9 +40,9 @@ class Experiment {
     console.log(this.observationSpaceInfo);
 
     this.agent = new CartPoleAgent(
-      this.actionSpaceInfo.typeDiscrete.n,
-      this.observationSpaceInfo.typeBox.shape[0],
-      this.observationSpaceInfo.typeBox
+      this.actionSpaceInfo.discrete.n,
+      this.observationSpaceInfo.box.dimensions[0],
+      this.observationSpaceInfo.box
     );
   }
 
