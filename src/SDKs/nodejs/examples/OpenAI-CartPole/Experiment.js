@@ -12,19 +12,14 @@ class Experiment {
   }
 
   async initialize() {
-    // Create our environment
-    this.env = await this.sim.Create({ envId: 'CartPole-v0' });
-
     // Our ActionSpace
     // For CartPole-v0 this returns: { info: { n: 2, name: 'Discrete' } }
-    this.actionSpaceInfo = await this.sim.ActionSpaceInfo({ instanceId: this.env.instanceId });
+    this.actionSpaceInfo = await this.sim.ActionSpaceInfo();
     this.actionSpaceInfo = this.actionSpaceInfo.result;
 
     // Our ObservationSpace
     // For CartPole-v0 this returns: { info: { high: [XXX], low: [XXX], name: 'Box', shape: [ 4 ] } }
-    this.observationSpaceInfo = await this.sim.ObservationSpaceInfo({
-        instanceId: this.env.instanceId
-    });
+    this.observationSpaceInfo = await this.sim.ObservationSpaceInfo();
     this.observationSpaceInfo = this.observationSpaceInfo.result;
 
     // Rebind our velocity and angular velocity parameters, the pole should stand still as much as possible
@@ -52,9 +47,7 @@ class Experiment {
     await this.initialize();
 
     // Start Monitoring
-    await this.sim.MonitorStart({
-        instanceId: this.env.instanceId
-    });
+    await this.sim.MonitorStart();
 
     // For every episode
     for (let episode = 0; episode < this.episodeCount; episode++) {
@@ -62,9 +55,7 @@ class Experiment {
       let environment = {
         done: false,
         info: {},
-        observation: await this.sim.Reset({
-            instanceId: this.env.instanceId
-        }),
+        observation: await this.sim.Reset(),
         reward: 0
       };
 
@@ -75,7 +66,6 @@ class Experiment {
       while (!environment.done && t < this.maxTimeSteps) {
         environment = await this.agent.act(
           this.sim,
-          this.env.instanceId,
           episode,
           environment.observation
         );
@@ -86,9 +76,7 @@ class Experiment {
     }
 
     // Stop Monitoring
-    await this.sim.MonitorStop({
-        instanceId: this.env.instanceId
-    });
+    await this.sim.MonitorStop();
     console.log(outDir);
   }
 }

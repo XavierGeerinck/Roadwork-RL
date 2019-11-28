@@ -5,6 +5,55 @@ Following diagram tries to explain this in more detail:
 
 ![/assets/architecture-high-level.png](./assets/architecture-high-level.png)
 
+The API that is being utilized to interact with the different simulators, is the one as defined by the [`OpenAI` API specification](https://github.com/openai/gym/blob/master/gym/core.py) enriched by extra methods (such as the `Create` one). 
+
+We enrich this API since OpenAI has a good basis but can also utilize extra methods for multi-environment management.
+
+API Methods Utilized:
+
+* **Create:** Create a new environment
+  * `@returns`: instanceId (string - represents the spawned instance that we can interact with)
+* **Step:** Execute one timestep within the environment
+  * `@returns`: reward (the reward received)
+  * `@returns`: observation (the next observation)
+  * `@returns`: isDone (bool - is the instance finished? if yes we need to call reset())
+* **Reset:** Reset the environment for the next use
+* **MonitorStart:** Start monitoring the environment, the result is being saved as a video
+* **MonitorStop:** Stop monitoring the environment
+* **Seed:** Sets the seed for this environment's random number generated
+
+If we apply the above to an example that will run a base random agent, then we would be able to describe this as follows:
+
+```javascript
+const client = new Client('CartPole-v0');
+await client.init();
+await client.MonitorStart();
+await client.Reset();
+
+for (let i = 0; i < 1000; i++) {
+  actionSpaceSample = await client.ActionSpaceSample();
+
+  const resStep = await client.Step(actionSpaceSample.action);  
+}
+
+await client.MonitorStop();
+```
+
+With the original in the OpenAI gym looking like this:
+
+```python
+import gym
+
+env = gym.make('CartPole-v0')
+env.reset()
+
+for _ in range(1000):
+    env.render()
+    env.step(env.action_space.sample())
+    
+env.close()
+```
+
 ## Dependencies Utilized
 
 - [grpc.io](https://grpc.io)
@@ -73,9 +122,11 @@ The supported simulators out of the box are situated in `src/SimulatorIntegratio
 - [Box2D] Box2D - `pip3 install box2d`
 - [Box2d] Box2D Kengz - `pip3 install box2d-kengz`
 
-> **Note:** when utilizing Windows, install ["xming"](https://sourceforge.net/projects/xming/) and export the following variable in your WSL shell: `export DISPLAY=localhost:0.0`, you can also add this to the startup script with: `echo "export DISPLAY=localhost:0.0" >> ~/.bashrc` 
+> **Note:** when utilizing Windows, install ["xming"](https://sourceforge.net/projects/xming/) and export the following variable in your WSL shell: `export DISPLAY=localhost:0.0`, you can also add this to the startup script with: `echo "export DISPLAY=localhost:0.0" >> ~/.bashrc`.
 
-> **Note 2:** It seems that on **WSL 2** things are a bit more complex and you have to use `export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0`. Next to that you also have to edit the Xming `X0.hosts` file (see installation directory - e.g. `C:\Program Files (x86)\Xming`) and add your WSL ip (see ifconfig inet address). For a more permanent but unsecure option, edit the desktop launch icon to include `-ac` in the startup options
+> **Note 2:** If you receive the error `AttributeError: 'ImageData' object has no attribute 'data'`, then install 
+
+> **Note 3:** It seems that on **WSL 2** things are a bit more complex and you have to use `export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0`. Next to that you also have to edit the Xming `X0.hosts` file (see installation directory - e.g. `C:\Program Files (x86)\Xming`) and add your WSL ip (see ifconfig inet address). For a more permanent but unsecure option, edit the desktop launch icon to include `-ac` in the startup options
 
 When running on a Ubuntu terminal only server, install a screen by running `sudo apt install xvfb` and starting it up with `xvfb-run -s "-screen 0 1400x900x24" bash`
 
@@ -97,6 +148,14 @@ python3 server.py
 # Run the nodejs example
 node ../../SDKs/nodejs/test.js
 ```
+
+### Custom
+
+To integrate your own custom simulator, a couple of steps have to be followed. As a high level overview, the following has to be done:
+
+1. Installation of the simulator
+2. Coding a handler that interacts with the simulator based on the `OpenAI` API
+3. A serializer has to be written 
 
 ## Examples
 

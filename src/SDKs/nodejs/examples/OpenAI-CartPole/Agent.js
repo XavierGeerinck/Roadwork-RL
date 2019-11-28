@@ -4,7 +4,6 @@ const episodeCount = 1000;
 const maxTimeSteps = 250;
 const outDir = "/tmp/random-agent/results";
 const numTrials = 3;
-const envId = "CartPole-v0";
 
 // Parameter to enable debug
 const PRINT_DEBUG = true;
@@ -115,7 +114,7 @@ class Agent {
    * @param {Array} observation array of observations (e.g. [1, 6, 9, 2.3])
    * @param {number} reward The reward we got from taking the previous action
    */
-  async act(client, instanceId, episode, observation) {
+  async act(client, episode, observation) {
     // ========================================================
     // 1. Map the current observation to a state
     // ========================================================
@@ -135,10 +134,7 @@ class Agent {
     // ========================================================
     // Choose an action
     const action = this.chooseAction(stateIndex, epsilon);
-    let newEnvironment = await client.Step({
-        instanceId, 
-        action
-    }); // returns { isDone, info, observationBox, reward }
+    let newEnvironment = await client.Step(action); // returns { isDone, info, observationBox, reward }
 
     // ========================================================
     // 3. Based on result of the action, update our Q value
