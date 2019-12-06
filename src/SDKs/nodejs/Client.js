@@ -1,9 +1,10 @@
 const GRPCHelper = require('grpc-helper').GRPCHelper;
 
 class Client {
-    constructor(envId) {
+    constructor(envId, grpcServerUrl='localhost:50051') {
         this.envId = envId;
         this.instanceId = null;
+        this.grpcServerUrl = grpcServerUrl;
     }
 
     async init() {
@@ -11,7 +12,7 @@ class Client {
             packageName: 'roadwork.services.simulator_service',
             serviceName: 'Simulator',
             protoPath: `${__dirname}/../../protobuf-definitions/services/simulator.proto`,
-            sdUri: 'static://localhost:50051'
+            sdUri: `static://${this.grpcServerUrl}`
         });
     
         await client.waitForReady();
@@ -19,7 +20,7 @@ class Client {
         this.client = client;
 
         // Create the envrionment
-        const res = await client.Create({ envId: 'CartPole-v0' });
+        const res = await client.Create({ envId: this.envId });
         this.instanceId = res.instanceId;
     
         return client;
