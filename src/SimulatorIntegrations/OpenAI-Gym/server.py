@@ -7,8 +7,11 @@ import gym
 
 from OpenAIEnv import Envs
 
-import services.simulator_pb2 as simulator_pb2
-import services.simulator_pb2_grpc as simulator_pb2_grpc
+import grpc_compiled.services.simulator.response_pb2 as response_pb2
+import grpc_compiled.system.base_response_pb2 as base_response_pb2
+import grpc_compiled.system.space_pb2 as space_pb2
+import grpc_compiled.services.simulator.service_pb2 as simulator_pb2
+import grpc_compiled.services.simulator.service_pb2_grpc as simulator_pb2_grpc
 
 import logging
 logger = logging.getLogger('werkzeug')
@@ -20,14 +23,14 @@ envs = Envs()
 class SimulatorServicer(simulator_pb2_grpc.SimulatorServicer):
     def Create(self, request, context):
         logger.info("Creating environment %s" % (request.envId))
-        response = simulator_pb2.SimulatorCreateResponse()
+        response = response_pb2.CreateResponse()
         response.instanceId = envs.create(request.envId)
         return response
 
     # def step(self, instance_id, action, render):
     def Step(self, request, context):
         logger.info("Stepping through instance %s" % (request.instanceId))
-        response = simulator_pb2.SimulatorStepResponse()
+        response = response_pb2.StepResponse()
 
         # Returns obs_jsonable, reward, done, info
         result = envs.step(request.instanceId, request.action, request.render)
@@ -39,22 +42,29 @@ class SimulatorServicer(simulator_pb2_grpc.SimulatorServicer):
         # Get the ObservationSpace metadata
         osi = envs.get_observation_space_info(request.instanceId)
 
+        spaceWrapper = space_pb2.SpaceWrapper()
+
         if osi.HasField('discrete'):
-            response.observationDiscrete.observation = result[0]
+            discreteSpace = space_pb2.SpaceDiscrete()
+            discreteSpace.observation = result[0]
+            spaceWrapper.discrete.CopyFrom(discreteSpace)
         elif osi.HasField('box'):
-            response.observationBox.observation.extend(result[0])
+            boxSpace = space_pb2.SpaceBox()
+            boxSpace.observation.extend(result[0])
+            spaceWrapper.box.CopyFrom(boxSpace)
         else:
             logger.error("Unsupported Space Type: %s" % info['name'])
             logger.error(info)
 
-        
+        response.observation.CopyFrom(spaceWrapper)
+
         logger.info("Step returned %s" % (response))
 
         return response
 
     def Reset(self, request, context):
         logger.info("Resetting instance %s" % (request.instanceId))
-        response = simulator_pb2.SimulatorResetResponse()
+        response = response_pb2.ResetResponse()
 
         envObservation = envs.reset(request.instanceId)
         response.observation.extend(envObservation)
@@ -64,37 +74,32 @@ class SimulatorServicer(simulator_pb2_grpc.SimulatorServicer):
     def Close(self, request, context):
         logger.info("Closing instance %s" % (request.instanceId))
         envs.env_close(request.instanceId)
-        return simulator_pb2.SimulatorCloseResponse() # Empty response
-
-    def Render(self, request, context):
-        logger.info("Closing instance %s" % (request.instanceId))
-        envs.render(request.instanceId)
-        return simulator_pb2.SimulatorCloseResponse() # Empty response
+        return response_pb2.CloseResponse() # Empty response
 
     def MonitorStart(self, request, context):
         logger.info("Monitor Start for instance %s" % (request.instanceId))
         envs.monitor_start(request.instanceId, './monitor', True, False, 10)
-        return simulator_pb2.BaseResponse() # Empty response
+        return base_response_pb2.BaseResponse() # Empty response
 
     def MonitorStop(self, request, context):
         logger.info("Monitor Stop for instance %s" % (request.instanceId))
         envs.monitor_close(request.instanceId)
-        return simulator_pb2.BaseResponse() # Empty response
+        return base_response_pb2.BaseResponse() # Empty response
 
     def ActionSpaceSample(self, request, context):
-        response = simulator_pb2.SimulatorActionSpaceSampleResponse()
+        response = response_pb2.ActionSpaceSampleResponse()
         action = envs.get_action_space_sample(request.instanceId)
         response.action = action
         logger.info("Sampled Action Space %s" % (response))
         return response
         
     def ActionSpaceInfo(self, request, context):
-        response = simulator_pb2.SimulatorActionSpaceInfoResponse()
+        response = response_pb2.ActionSpaceInfoResponse()
         response.result.CopyFrom(envs.get_action_space_info(request.instanceId))
         return response
     
     def ObservationSpaceInfo(self, request, context):
-        response = simulator_pb2.SimulatorObservationSpaceInfoResponse()
+        response = response_pb2.ObservationSpaceInfoResponse()
         response.result.CopyFrom(envs.get_observation_space_info(request.instanceId))
         print(response)
         return response

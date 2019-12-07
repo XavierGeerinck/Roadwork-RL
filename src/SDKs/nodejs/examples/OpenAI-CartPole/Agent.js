@@ -142,7 +142,7 @@ class Agent {
     let newStateIndex = this.observationToStateIndex(
       this.states,
       this.bucketArrays,
-      newEnvironment.observationBox.observation
+      newEnvironment.observation.box
     );
 
     this.updateQ(
@@ -156,7 +156,7 @@ class Agent {
     return {
         done: newEnvironment.isDone,
         info: {},
-        observation: newEnvironment.observationBox,
+        observation: newEnvironment.observation.box,
         reward: newEnvironment.reward
     };
   }

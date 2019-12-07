@@ -1,67 +1,60 @@
-const Client = require('../main');
+const Client = require('../Client');
 
 const start = async () => {
-    const client = await Client.initialize();
+    // const client = new Client('CartPole-v0', '172.19.115.176:50051');
+    const client = new Client('CartPole-v0', 'localhost:50051');
+    await Client.init();
 
-    try { 
-        // Create Gym
-        const res = await client.Create({
-            // envId: 'Blackjack-v0'
-            envId: 'CartPole-v0'
-        });
+    // try { 
+    //     // ObservationSpace Info
+    //     const resObservationSpace = await client.ObservationSpaceInfo({ instanceId: res.instanceId });
 
-        console.log(res);
+    //     console.log('\nObservation Space')
+    //     console.log(resObservationSpace)
 
-        // ObservationSpace Info
-        const resObservationSpace = await client.ObservationSpaceInfo({ instanceId: res.instanceId });
+    //     // ActionSpace Info
+    //     const resActionSpace = await client.ActionSpaceInfo({ instanceId: res.instanceId });
 
-        console.log('\nObservation Space')
-        console.log(resObservationSpace)
+    //     console.log('\nAction Space')
+    //     console.log(resActionSpace)
 
-        // ActionSpace Info
-        const resActionSpace = await client.ActionSpaceInfo({ instanceId: res.instanceId });
+    //     let actionSpaceSample = await client.ActionSpaceSample({ instanceId: res.instanceId });
+    //     console.log('\nActionSpace Sample');
+    //     console.log(actionSpaceSample);
 
-        console.log('\nAction Space')
-        console.log(resActionSpace)
+    //     // Step
+    //     await client.MonitorStart({ instanceId: res.instanceId });
 
-        let actionSpaceSample = await client.ActionSpaceSample({ instanceId: res.instanceId });
-        console.log('\nActionSpace Sample');
-        console.log(actionSpaceSample);
+    //     // Reset
+    //     const resReset = await client.Reset({ instanceId: res.instanceId });
+    //     console.log('\nReset')
+    //     console.log(resReset);
 
-        // Step
-        await client.MonitorStart({ instanceId: res.instanceId });
+    //     let isDone = false;
+    //     let i = 1;
 
-        // Reset
-        const resReset = await client.Reset({ instanceId: res.instanceId });
-        console.log('\nReset')
-        console.log(resReset);
+    //     while (!isDone) {
+    //         console.log(`Iteration: ${i}`);
+    //         // await client.Render({ instanceId: res.instanceId });
 
-        let isDone = false;
-        let i = 1;
+    //         actionSpaceSample = await client.ActionSpaceSample({ instanceId: res.instanceId });
+    //         console.log(actionSpaceSample.action);
 
-        while (!isDone) {
-            console.log(`Iteration: ${i}`);
-            // await client.Render({ instanceId: res.instanceId });
+    //         console.log('Taking Step');
+    //         const resStep = await client.Step({
+    //             instanceId: res.instanceId,
+    //             action: actionSpaceSample.action
+    //         });
+    //         console.log(resStep);
 
-            actionSpaceSample = await client.ActionSpaceSample({ instanceId: res.instanceId });
-            console.log(actionSpaceSample.action);
-
-            console.log('Taking Step');
-            const resStep = await client.Step({
-                instanceId: res.instanceId,
-                action: actionSpaceSample.action
-            });
-            console.log(resStep);
-
-            isDone = resStep.isDone;
-            i++;
-        }
+    //         isDone = resStep.isDone;
+    //         i++;
+    //     }
         
-        await client.MonitorStop({ instanceId: res.instanceId });
-    } catch (e) {
-        console.log(e);
-    }
-
+    //     await client.MonitorStop({ instanceId: res.instanceId });
+    // } catch (e) {
+    //     console.log(e);
+    // }
 }
 
 start();

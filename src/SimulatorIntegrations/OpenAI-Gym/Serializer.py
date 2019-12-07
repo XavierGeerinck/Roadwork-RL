@@ -1,10 +1,10 @@
 import numpy as np
-import services.simulator_pb2 as simulator_pb2
+import grpc_compiled.system.space_meta_pb2 as space_meta_pb2
 
 def serialize(obj):
     className = obj.__class__.__name__
 
-    res = simulator_pb2.MetaSpaceWrapper()
+    res = space_meta_pb2.MetaSpaceWrapper()
 
     if className == 'Box':
         res.box.CopyFrom(serializeBox(obj))
@@ -20,7 +20,7 @@ def unserialize(obj):
 
 # https://github.com/openai/gym/blob/master/gym/spaces/box.py
 def serializeBox(b):
-    result = simulator_pb2.MetaSpaceBox()
+    result = space_meta_pb2.MetaSpaceBox()
 
     if b.shape[0] == 1:
         result.dimensions.extend(np.asarray(b.shape[1:]).tolist())
@@ -33,21 +33,21 @@ def serializeBox(b):
     return result
 
 def serializeDiscrete(d):
-    result = simulator_pb2.MetaSpaceDiscrete()
+    result = space_meta_pb2.MetaSpaceDiscrete()
     result.n = d.n
 
     return result
 
 # https://github.com/openai/gym/blob/master/gym/spaces/tuple.py
 def serializeTuple(t):
-    result = simulator_pb2.MetaSpaceTuple()
+    result = space_meta_pb2.MetaSpaceTuple()
 
     for t in t.spaces:
         tCN = t.__class__.__name__
         serializedTupleValue = serialize(t)
         serializedTupleValueCN = serializedTupleValue.__class__.__name__
 
-        resultWrapper = simulator_pb2.MetaSpaceWrapper()
+        resultWrapper = space_meta_pb2.MetaSpaceWrapper()
 
         if serializedTupleValueCN == 'MetaSpaceDiscrete':
             # resultWrapper.discrete.n = serializedTupleValue.n
