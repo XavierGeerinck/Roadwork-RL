@@ -4,8 +4,10 @@
 const Client = require('../../Client');
 const Experiment = require('./Experiment');
 
+const host = process.argv[2] || 'localhost:50051';
+
 const start = async () => {
-    const client = new Client('CartPole-v0');
+    const client = new Client('CartPole-v0', host);
     await client.init();
 
     // Create and run our experiment

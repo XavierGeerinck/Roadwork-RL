@@ -1,72 +1,61 @@
 const Client = require('../Client');
 
+const host = process.argv[2] || 'localhost:50051';
+
 const start = async () => {
-    // const client = new Client('CartPole-v0', '172.19.115.176:50051');
-    const client = new Client('CartPole-v0', 'localhost:50051');
-    await Client.init();
+    console.log(`Connecting to: ${host}`);
+    const client = new Client('CartPole-v0', host);
+    await client.init();
 
-    // try { 
-    //     // ObservationSpace Info
-    //     const resObservationSpace = await client.ObservationSpaceInfo({ instanceId: res.instanceId });
+    try { 
+        // ObservationSpace Info
+        const resObservationSpace = await client.ObservationSpaceInfo();
 
-    //     console.log('\nObservation Space')
-    //     console.log(resObservationSpace)
+        console.log('\nObservation Space')
+        console.log(resObservationSpace)
 
-    //     // ActionSpace Info
-    //     const resActionSpace = await client.ActionSpaceInfo({ instanceId: res.instanceId });
+        // ActionSpace Info
+        const resActionSpace = await client.ActionSpaceInfo();
 
-    //     console.log('\nAction Space')
-    //     console.log(resActionSpace)
+        console.log('\nAction Space')
+        console.log(resActionSpace)
 
-    //     let actionSpaceSample = await client.ActionSpaceSample({ instanceId: res.instanceId });
-    //     console.log('\nActionSpace Sample');
-    //     console.log(actionSpaceSample);
+        let actionSpaceSample = await client.ActionSpaceSample();
+        console.log('\nActionSpace Sample');
+        console.log(actionSpaceSample);
 
-    //     // Step
-    //     await client.MonitorStart({ instanceId: res.instanceId });
+        // Step
+        await client.MonitorStart();
 
-    //     // Reset
-    //     const resReset = await client.Reset({ instanceId: res.instanceId });
-    //     console.log('\nReset')
-    //     console.log(resReset);
+        // Reset
+        const resReset = await client.Reset();
+        console.log('\nReset')
+        console.log(resReset);
 
-    //     let isDone = false;
-    //     let i = 1;
+        let isDone = false;
+        let i = 1;
 
-    //     while (!isDone) {
-    //         console.log(`Iteration: ${i}`);
-    //         // await client.Render({ instanceId: res.instanceId });
+        while (!isDone) {
+            console.log(`Iteration: ${i}`);
+            // await client.Render({ instanceId: res.instanceId });
 
-    //         actionSpaceSample = await client.ActionSpaceSample({ instanceId: res.instanceId });
-    //         console.log(actionSpaceSample.action);
+            actionSpaceSample = await client.ActionSpaceSample();
+            console.log(actionSpaceSample.action);
 
-    //         console.log('Taking Step');
-    //         const resStep = await client.Step({
-    //             instanceId: res.instanceId,
-    //             action: actionSpaceSample.action
-    //         });
-    //         console.log(resStep);
+            console.log('Taking Step');
+            const resStep = await client.Step({
+                action: actionSpaceSample.action
+            });
+            console.log(resStep);
 
-    //         isDone = resStep.isDone;
-    //         i++;
-    //     }
+            isDone = resStep.isDone;
+            i++;
+        }
         
-    //     await client.MonitorStop({ instanceId: res.instanceId });
-    // } catch (e) {
-    //     console.log(e);
-    // }
+        await client.MonitorStop();
+    } catch (e) {
+        console.log(e);
+    }
 }
 
 start();
-
-
-// import gym
-
-// env = gym.make('CartPole-v0')
-// env.reset()
-
-// for _ in range(1000):
-//     env.render()
-//     env.step(env.action_space.sample())
-    
-// env.close()
