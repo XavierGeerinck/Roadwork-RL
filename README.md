@@ -24,8 +24,6 @@ We enrich this API since OpenAI has a good basis but can also utilize extra meth
 
 ## TODO
 
-* Add a Python SDK
-* Split up the `protobuf-definitions` into sub-definitions
 * Integrate [Facebook ReAgent](https://github.com/facebookresearch/ReAgent) on top of this
     * Simulation Observation Downloader
     * Trainer On-Policy & Off-Policy
