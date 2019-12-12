@@ -1,90 +1,323 @@
-const entries = {
-    "meta-components": [
-        {
+const entries = [
+    {
+        id: "digital-twin-root",
+        category: "meta-components",
+        addComponent: {
             title: 'New Digital Twin Root',
             description: 'Adds a new Digital Twin root item',
-            icon: 'assets/database.svg'
         },
-        {
-            title: 'New Digital Twin Child',
+        component: {
+            title: "Digital Twin Root"
+        },
+        icon: 'assets/twin.svg',
+        iconColor: 'assets/twin-blue.svg'
+    },
+    {
+        id: "digital-twin-child",
+        category: "meta-components",
+        addComponent: {
+            title: 'Digital Twin Child',
             description: 'Adds a new Digital Twin child item',
-            icon: 'assets/database.svg'
-        }
-    ],
-    "sensors": [
-        {
-            title: 'New Database entry',
-            description: 'Adds a new entry to a specified database',
-            icon: 'assets/database.svg'
         },
-        {
-            title: 'Update Database',
-            description: 'Lorem Ipsum .....',
-            icon: 'assets/database.svg'
+        component: {
+            title: "Digital Twin Child"
         },
-        {
-            title: 'Performan an Action',
-            description: 'Lorem Ipsum .....',
-            icon: 'assets/action.svg'
+        icon: 'assets/twin.svg',
+        iconColor: 'assets/twin-blue.svg'
+    },
+    {
+        id: "sensor-turbine-h",
+        category: "sensor",
+        addComponent: {
+            title: 'Turbine (Horizontal)',
+            description: 'Represents the rotation value of the Horizontal Shaft in the Wind Turbine',
         },
-        {
-            title: 'make a tweet',
-            description: 'Lorem Ipsum .....',
-            icon: 'assets/twitter.svg'
-        }
-    ]
+        component: {
+            title: "Turbine (Horizontal)",
+            description: "Represents the rotation value of the Horizontal Shaft in the Wind Turbine"
+        },
+        measures: [
+            {
+                nameKey: "rotationAngle",
+                value: {
+                    type: "continuous",
+                    dataType: "int",
+                    lowerLimit: 0,
+                    upperLimit: 360
+                }
+            },
+            {
+                nameKey: "rotationSpeed",
+                value: {
+                    type: "continuous",
+                    dataType: "double",
+                    lowerLimit: 0,
+                    upperLimit: 100
+                }
+            }
+        ],
+        icon: 'assets/sensor.svg',
+        iconColor: 'assets/sensor-blue.svg'
+    },
+    {
+        id: "sensor-turbine-v",
+        category: "sensor",
+        addComponent: {
+            title: 'Turbine (Vertical)',
+            description: 'Represents the rotation value of the Vertical Shaft in the Wind Turbine',
+        },
+        component: {
+            title: "Turbine (Vertical)",
+            description: "Represents the rotation value of the Vertical Shaft in the Wind Turbine"
+        },
+        measures: [
+            {
+                nameKey: "rotationAngle",
+                value: {
+                    type: "continuous",
+                    dataType: "int",
+                    lowerLimit: 0,
+                    upperLimit: 360
+                }
+            },
+            {
+                nameKey: "rotationSpeed",
+                value: {
+                    type: "continuous",
+                    dataType: "double",
+                    lowerLimit: 0,
+                    upperLimit: 100
+                }
+            }
+        ],
+        icon: 'assets/sensor.svg',
+        iconColor: 'assets/sensor-blue.svg'
+    },
+    {
+        id: "sensor-temperature",
+        category: "sensor",
+        addComponent: {
+            title: 'Temperature',
+            description: 'Measures Temperature',
+        },
+        component: {
+            title: "Temperature",
+            description: "Measures Temperature"
+        },
+        icon: 'assets/sensor.svg',
+        iconColor: 'assets/sensor-blue.svg'
+    },
+    {
+        id: "sensor-proximity",
+        category: "sensor",
+        addComponent: {
+            title: 'Proximity',
+            description: 'Measure Proximity',
+        },
+        component: {
+            title: "Proximity",
+            description: "Measure Proximity"
+        },
+        icon: 'assets/sensor.svg',
+        iconColor: 'assets/sensor-blue.svg'
+    },
+    {
+        id: "sensor-accelerometer",
+        category: "sensor",
+        addComponent: {
+            title: 'Accelerometer',
+            description: 'Measures Accelerometer',
+        },
+        component: {
+            title: "Accelerometer",
+            description: "Measures Accelerometer"
+        },
+        icon: 'assets/sensor.svg',
+        iconColor: 'assets/sensor-blue.svg'
+    },
+    {
+        id: "sensor-light",
+        category: "sensor",
+        addComponent: {
+            title: 'Light',
+            description: 'Measures Light',
+        },
+        component: {
+            title: "Light",
+            description: "Measures Light"
+        },
+        icon: 'assets/sensor.svg',
+        iconColor: 'assets/sensor-blue.svg'
+    },
+    {
+        id: "api-weather-temperature",
+        category: "api",
+        addComponent: {
+            title: 'New Weather API (Temperature)',
+            description: 'Returns the temperature at this moment (C)',
+        },
+        component: {
+            title: "Weather API (Temperature)",
+            description: "Returns the temperature at this moment (C)"
+        },
+        measures: [
+            {
+                nameKey: "temperature",
+                value: {
+                    type: "continuous",
+                    dataType: "double",
+                    lowerLimit: -20,
+                    upperLimit: 40
+                }
+            }
+        ],
+        icon: 'assets/weather.svg',
+        iconColor: 'assets/weather-blue.svg'
+    },
+    {
+        id: "api-weather-wind",
+        category: "api",
+        addComponent: {
+            title: 'New Weather API (Wind Speed)',
+            description: 'Returns the wind speed at this moment (kmh)',
+        },
+        component: {
+            title: "Weather API (Wind Speed)",
+            description: "Returns the wind speed at this moment (kmh)"
+        },
+        measures: [
+            {
+                nameKey: "windSpeed",
+                value: {
+                    type: "continuous",
+                    dataType: "double",
+                    lowerLimit: 0,
+                    upperLimit: 90
+                }
+            },
+            {
+                nameKey: "windOrientation",
+                value: {
+                    type: "discrete",
+                    dataType: "enum",
+                    values: [ "N", "NE", "E", "SE", "S", "SW", "W", "NW" ]
+                }
+            }
+        ],
+        icon: 'assets/weather-wind.svg',
+        iconColor: 'assets/weather-wind-blue.svg'
+    }
+];
+
+const toggleLeftCard = () => {
+    $("#leftcard").toggle();
+
+    if ($("#leftcard").is(":visible")) {
+        $("#closecard").css("margin-left", "363px");
+        $("#closecard").html("<img src='assets/closeleft.svg' />");
+    } else {
+        $("#closecard").css("margin-left", "0px");
+        $("#closecard").html("<img src='assets/openright.svg' />");
+    }
 };
 
-const generateBlockHtml = (title, description, icon) => {
+const generateBlockHtml = (id, title, description, icon) => {
     return `
     <div class="blockelem create-flowy noselect">
-        <input type="hidden" name="blockelemtype" class="blockelemtype" value="5">
+        <input type="hidden" name="blockelemtype" class="blockelemtype" value="${id}">
         <div class="grabme">
             <img src="assets/grabme.svg"></div>
             <div class="blockin">
                 <div class="blockico"><span></span><img src="${icon}"></div>
                 <div class="blocktext">
                 <p class="blocktitle">${title}</p>
-                <p class="blockdesc">${description}</p>
+                ${description && `<p class="blockdesc">${description}</p>`}
             </div>
         </div>
     </div>
     `
 }
 
+// {
+//     nameKey: "windSpeed",
+//     value: {
+//         type: "continuous",
+//         dataType: "double",
+//         lowerLimit: 0,
+//         upperLimit: 90
+//     }
+// },
+// {
+//     nameKey: "windOrientation",
+//     value: {
+//         type: "discrete",
+//         dataType: "enum",
+//         values: [ "N", "NE", "E", "SE", "S", "SW", "W", "NW" ]
+//     }
+// }
+const generateBlockDiagramMeasuresHtml = (measurement) => {
+    switch (measurement.value.type) {
+        case "continuous":
+            return `${measurement.value.dataType} ${measurement.nameKey} [${measurement.value.lowerLimit} ${measurement.value.upperLimit}]`;
+        case "discrete":
+            return `${measurement.value.dataType} ${measurement.nameKey} [${measurement.value.values.join(', ')}]`;
+        default:
+            return "Not-Implemented"
+    }
+};
+
+const generateBlockDiagramHtml = (id, title, description, measures = [], icon) => {
+    return `
+    <div class='blockyleft'>
+        <img src='${icon}'>
+        <p class='blockyname'>${title}</p>
+    </div>
+    <div class='blockyright'><img src='assets/more.svg'></div>
+
+    ${
+        description ? `
+        <div class='blockydiv'></div>
+        <p class="blockdesc">${description}</p>
+        ` : ""
+    }
+    ${
+        measures ? `
+            <ul>
+                ${measures.map(i => `<li>${generateBlockDiagramMeasuresHtml(i)}</li>`).join('')}
+            </ul>
+        ` : ""
+    }
+    `;
+}
+
+function initBlocklist(entryKey) {
+    let components = entries.filter(i => i.category == entryKey);
+
+    html = '';
+    for (let i in components) {
+        html += generateBlockHtml(components[i].id, components[i].addComponent.title, components[i].addComponent.description, components[i].icon);
+    }
+
+    $("#blocklist").html(html);
+}
+
 $(document).ready(function(){
     var rightcard = false;
     var tempblock;
     var tempblock2;
-    $("#blocklist").html('<div class="blockelem create-flowy noselect" data-test="yayyy"><input type="hidden" name="blockelemtype" class="blockelemtype" value="1"><div class="grabme"><img src="assets/grabme.svg"></div><div class="blockin">                  <div class="blockico"><span></span><img src="assets/eye.svg"></div><div class="blocktext">                        <p class="blocktitle">New visitor</p><p class="blockdesc">Triggers when somebody visits a specified page</p>        </div></div></div><div class="blockelem create-flowy noselect"><input type="hidden" name="blockelemtype" class="blockelemtype" value="2"><div class="grabme"><img src="assets/grabme.svg"></div><div class="blockin">                    <div class="blockico"><span></span><img src="assets/action.svg"></div><div class="blocktext">                        <p class="blocktitle">Action is performed</p><p class="blockdesc">Triggers when somebody performs a specified action</p></div></div></div><div class="blockelem create-flowy noselect"><input type="hidden" name="blockelemtype" class="blockelemtype" value="3"><div class="grabme"><img src="assets/grabme.svg"></div><div class="blockin">                    <div class="blockico"><span></span><img src="assets/time.svg"></div><div class="blocktext">                        <p class="blocktitle">Time has passed</p><p class="blockdesc">Triggers after a specified amount of time</p>          </div></div></div><div class="blockelem create-flowy noselect"><input type="hidden" name="blockelemtype" class="blockelemtype" value="4"><div class="grabme"><img src="assets/grabme.svg"></div><div class="blockin">                    <div class="blockico"><span></span><img src="assets/error.svg"></div><div class="blocktext">                        <p class="blocktitle">Error prompt</p><p class="blockdesc">Triggers when a specified error happens</p>              </div></div></div>');
+    
+    initBlocklist("meta-components");
+
     flowy($("#canvas"), drag, release, snapping);
     
     function snapping(drag, first) {
-            drag.children(".grabme").remove();
+        drag.children(".grabme").remove();
         drag.children(".blockin").remove();
-        if (drag.children(".blockelemtype").val() == "1") {
-            drag.append("<div class='blockyleft'><img src='assets/eyeblue.svg'><p class='blockyname'>New visitor</p></div><div class='blockyright'><img src='assets/more.svg'></div><div class='blockydiv'></div><div class='blockyinfo'>When a <span>new visitor</span> goes to <span>Site 1</span></div>");
-        } else if (drag.children(".blockelemtype").val() == "2") {
-            drag.append("<div class='blockyleft'><img src='assets/actionblue.svg'><p class='blockyname'>Action is performed</p></div><div class='blockyright'><img src='assets/more.svg'></div><div class='blockydiv'></div><div class='blockyinfo'>When <span>Action 1</span> is performed</div>");
-        } else if (drag.children(".blockelemtype").val() == "3") {
-            drag.append("<div class='blockyleft'><img src='assets/timeblue.svg'><p class='blockyname'>Time has passed</p></div><div class='blockyright'><img src='assets/more.svg'></div><div class='blockydiv'></div><div class='blockyinfo'>When <span>10 seconds</span> have passed</div>");
-        } else if (drag.children(".blockelemtype").val() == "4") {
-            drag.append("<div class='blockyleft'><img src='assets/errorblue.svg'><p class='blockyname'>Error prompt</p></div><div class='blockyright'><img src='assets/more.svg'></div><div class='blockydiv'></div><div class='blockyinfo'>When <span>Error 1</span> is triggered</div>");
-        } else if (drag.children(".blockelemtype").val() == "5") {
-            drag.append("<div class='blockyleft'><img src='assets/databaseorange.svg'><p class='blockyname'>New database entry</p></div><div class='blockyright'><img src='assets/more.svg'></div><div class='blockydiv'></div><div class='blockyinfo'>Add <span>Data object</span> to <span>Database 1</span></div>");
-        } else if (drag.children(".blockelemtype").val() == "6") {
-            drag.append("<div class='blockyleft'><img src='assets/databaseorange.svg'><p class='blockyname'>Update database</p></div><div class='blockyright'><img src='assets/more.svg'></div><div class='blockydiv'></div><div class='blockyinfo'>Update <span>Database 1</span></div>");
-        } else if (drag.children(".blockelemtype").val() == "7") {
-            drag.append("<div class='blockyleft'><img src='assets/actionorange.svg'><p class='blockyname'>Perform an action</p></div><div class='blockyright'><img src='assets/more.svg'></div><div class='blockydiv'></div><div class='blockyinfo'>Perform <span>Action 1</span></div>");
-        } else if (drag.children(".blockelemtype").val() == "8") {
-            drag.append("<div class='blockyleft'><img src='assets/twitterorange.svg'><p class='blockyname'>Make a tweet</p></div><div class='blockyright'><img src='assets/more.svg'></div><div class='blockydiv'></div><div class='blockyinfo'>Tweet <span>Query 1</span> with the account <span>@alyssaxuu</span></div>");
-        } else if (drag.children(".blockelemtype").val() == "9") {
-            drag.append("<div class='blockyleft'><img src='assets/logred.svg'><p class='blockyname'>Add new log entry</p></div><div class='blockyright'><img src='assets/more.svg'></div><div class='blockydiv'></div><div class='blockyinfo'>Add new <span>success</span> log entry</div>");
-        } else if (drag.children(".blockelemtype").val() == "10") {
-            drag.append("<div class='blockyleft'><img src='assets/logred.svg'><p class='blockyname'>Update logs</p></div><div class='blockyright'><img src='assets/more.svg'></div><div class='blockydiv'></div><div class='blockyinfo'>Edit <span>Log Entry 1</span></div>");
-        } else if (drag.children(".blockelemtype").val() == "11") {
-            drag.append("<div class='blockyleft'><img src='assets/errorred.svg'><p class='blockyname'>Prompt an error</p></div><div class='blockyright'><img src='assets/more.svg'></div><div class='blockydiv'></div><div class='blockyinfo'>Trigger <span>Error 1</span></div>");
-        }
+
+        const componentId = drag.children(".blockelemtype").val();
+        const componentInfo = entries.filter(i => i.id == componentId)[0];
+
+        drag.append(generateBlockDiagramHtml(componentInfo.id, componentInfo.component.title, componentInfo.component.description, componentInfo.measures, componentInfo.iconColor));
         return true;
     }
     
@@ -103,14 +336,7 @@ $(document).ready(function(){
 
         // Handle clicking Meta Blocks component....
         let entryKey = $(this).attr("id");
-        let components = entries[entryKey];
-
-        html = '';
-        for (let i in components) {
-            html += generateBlockHtml(components[i].title, components[i].description, components[i].icon);
-        }
-
-        $("#blocklist").html(html);
+        initBlocklist(entryKey);
     });
     $("#close").click(function(){
        if (rightcard) {

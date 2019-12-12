@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="30" viewBox="0 0 20 30">
+  <g id="Thermometer-Hot" transform="translate(-6 -1)">
+    <g id="Group" transform="translate(7 2)">
+      <path id="Combined-Shape" d="M3,16.8V3A3,3,0,0,1,9,3V16.8a6,6,0,1,1-6,0Z" fill="none" stroke="#0078d4" stroke-width="2" fill-rule="evenodd"/>
+      <path id="Path-19" d="M13,5h5" fill="none" stroke="#0078d4" stroke-linecap="round" stroke-width="2" fill-rule="evenodd"/>
+      <path id="Path-20" d="M13,9h5" fill="none" stroke="#0078d4" stroke-linecap="round" stroke-width="2" fill-rule="evenodd"/>
+      <path id="Path-21" d="M13,13h5" fill="none" stroke="#0078d4" stroke-linecap="round" stroke-width="2" fill-rule="evenodd"/>
+    </g>
+    <g id="Group-2" transform="translate(10 12)">
+      <circle id="Oval" cx="3" cy="3" r="3" transform="translate(0 9)" fill="#50e6ff"/>
+      <rect id="Rectangle-2" width="2" height="11" rx="1" transform="translate(2)" fill="#50e6ff"/>
+    </g>
+  </g>
+</svg>
