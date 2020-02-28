@@ -8,16 +8,16 @@ from google.protobuf.any_pb2 import Any
 import os
 
 # Get port from environment variable.
-port = os.getenv('DAPR_GRPC_PORT', '5001')
+port = os.getenv('DAPR_GRPC_PORT', '50051')
 daprUri = 'localhost:' + port
 channel = grpc.insecure_channel(daprUri)
 
 # Start a gRPC client
 client = dapr_services.DaprStub(channel)
 
-data = Any(value='ACTION=1')
-metadata = Any()
-client.InvokeService(dapr_messages.InvokeServiceEnvelope(id="1", method="my_method", data=data, metadata=metadata))
+data = Any(value='ACTION=1'.encode('utf-8'))
+# metadata = Any()
+client.InvokeService(dapr_messages.InvokeServiceEnvelope(id="1", method="my_method", data=data))
 print('Invoked!')
 
 
