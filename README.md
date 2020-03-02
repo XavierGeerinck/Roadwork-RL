@@ -4,6 +4,7 @@ A Reinforcement Learning library that act as an abstraction layer between differ
 Following diagram tries to explain this in more detail:
 
 ![/assets/architecture-high-level.png](./assets/architecture-high-level.png)
+![/assets/architecture-dapr.svg](./assets/architecture-dapr.svg)
 
 The API that is being utilized to interact with the different simulators, is the one as defined by the [`OpenAI` API specification](https://github.com/openai/gym/blob/master/gym/core.py) enriched by extra methods (such as the `Create` one). 
 
