@@ -17,13 +17,7 @@ The supported simulators out of the box are situated in `src/SimulatorIntegratio
 - [Box2D] Box2D - `pip3 install box2d`
 - [Box2d] Box2D Kengz - `pip3 install box2d-kengz`
 
-> **Note:** when utilizing Windows, install ["xming"](https://sourceforge.net/projects/xming/) and export the following variable in your WSL shell: `export DISPLAY=localhost:0.0`, you can also add this to the startup script with: `echo "export DISPLAY=localhost:0.0" >> ~/.bashrc`.
-
-> **Note 2:** If you receive the error `AttributeError: 'ImageData' object has no attribute 'data'`, then install 
-
-> **Note 3:** It seems that on **WSL 2** things are a bit more complex and you have to use `export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0`. Next to that you also have to edit the Xming `X0.hosts` file (see installation directory - e.g. `C:\Program Files (x86)\Xming`) and add your WSL ip (see ifconfig inet address). For a more permanent but unsecure option, edit the desktop launch icon to include `-ac` in the startup options
-
-When running on a Ubuntu terminal only server, install a screen by running `sudo apt install xvfb` and starting it up with `xvfb-run -s "-screen 0 1400x900x24" bash`
+> **Note 2:** If you receive the error `AttributeError: 'ImageData' object has no attribute 'data'`, then install pyglet 1.3.2
 
 ### Installation
 

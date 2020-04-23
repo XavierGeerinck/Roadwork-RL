@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-package roadwork.system;
-
-// See: https://developers.google.com/protocol-buffers/docs/proto#scalar
-// https://github.com/openai/gym/blob/master/gym/core.py
-message BaseRequest {
-    string instanceId = 1;
-}

@@ -1,26 +1,41 @@
-# Roadwork
-A Reinforcement Learning library that act as an abstraction layer between different simulation environments and languages, allowing for simulator &amp; code agnostic reinforcement learning research to be done.
+# Roadwork RL
 
-Following diagram tries to explain this in more detail:
+> **Note:** This project is currently under heavy development and may change. It should not be used for production deployments yet.
+
+Roadwork RL is a Reinforcement Learning that act as an abstraction layer between different simulation environments and languages, allowing for simulator &amp; code agnostic reinforcement learning research to be done.
+
+As a simplified overview, the following diagram explains in more detail how this looks like from a **conceptual level**:
 
 ![/assets/architecture-high-level.png](./assets/architecture-high-level.png)
-![/assets/architecture-dapr.svg](./assets/architecture-dapr.svg)
 
-The API that is being utilized to interact with the different simulators, is the one as defined by the [`OpenAI` API specification](https://github.com/openai/gym/blob/master/gym/core.py) enriched by extra methods (such as the `Create` one). 
+## Getting Started
 
-We enrich this API since OpenAI has a good basis but can also utilize extra methods for multi-environment management.
+Getting started is independent of the Operating System and only requires a **Kubernetes** cluster to be available capable of running **Linux Containers**. However to help with this the following documentation is available:
 
-## Dependencies Utilized
+* [Windows](./getting-started/windows.md)
+* [Linux](./getting-started/linux.md) - WIP
 
-- [grpc.io](https://grpc.io)
-- [OpenAI](https://github.com/openai/gym)
-- [Protobuf](https://github.com/protocolbuffers/protobuf)
+## Dependencies
+
+* [grpc.io](https://grpc.io)
+* [Protobuf](https://github.com/protocolbuffers/protobuf)
+* [Dapr](https://github.com/dapr/dapr)
+* [Kubernetes](https://github.com/kubernetes/kubernetes)
+
+### Language SDKs Available
+
+* [Python](./docs/sdk/python.md)
+* [NodeJS](./docs/sdk/node.md) - WIP
+
+### Simulators Implemented
+
+* [OpenAI](https://github.com/openai/gym)
 
 ## References
 
+* [High-Level Technical Overview](./docs/technical.md)
 * [Protobuf Serialization](./docs/protobuf.md)
 * [Spaces](./docs/spaces.md)
-* [SDKs](./docs/sdks.md)
 * [Simulators](./docs/simulators.md)
 
 ## TODO
